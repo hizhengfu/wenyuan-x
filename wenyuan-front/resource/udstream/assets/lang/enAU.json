@@ -1,0 +1,10 @@
+{
+  "sceneVerticalDistance": "垂直距离",
+  "sceneStraightDistance": "净空距离",
+  "sceneHorizontalDistance": "水平距离",
+  "scenePOIDefaultName": "兴趣点",
+  "scenePOIAreaDefaultName": "关注区域",
+  "scenePOIAreaMeasureDefaultName": "区域测量",
+  "scenePOILineDefaultName": "兴趣点",
+  "mapTileDefaultName": "地图磁贴"
+}
