@@ -1,0 +1,162 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-museum-safety",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-museum-device",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-video",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-message",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-museum-safety-2.0.0.jar",
+          "url": "module-museum-safety-2.0.0.jar",
+          "size": 901313,
+          "sha512": "82fb69b2124317fc310319d7eaca5d2258d44cb3a832cf871b47b59eb35762c9f02db181dd14ef0c2f2e547e71e56c9ba59dd2a28c76dff6061926a4a82d616c",
+          "sha256": "fe3ad7f2112b1c253f7f12ebd5ecd634ed32e735796ac0ff6255481614a86ced",
+          "sha1": "897521361f3ff0f7d411aed8b0ef8e147f217114",
+          "md5": "588e0a067314be6c216bf773b742913b"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-museum-device",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-video",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-message",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-museum-safety-2.0.0.jar",
+          "url": "module-museum-safety-2.0.0.jar",
+          "size": 901313,
+          "sha512": "82fb69b2124317fc310319d7eaca5d2258d44cb3a832cf871b47b59eb35762c9f02db181dd14ef0c2f2e547e71e56c9ba59dd2a28c76dff6061926a4a82d616c",
+          "sha256": "fe3ad7f2112b1c253f7f12ebd5ecd634ed32e735796ac0ff6255481614a86ced",
+          "sha1": "897521361f3ff0f7d411aed8b0ef8e147f217114",
+          "md5": "588e0a067314be6c216bf773b742913b"
+        }
+      ]
+    }
+  ]
+}

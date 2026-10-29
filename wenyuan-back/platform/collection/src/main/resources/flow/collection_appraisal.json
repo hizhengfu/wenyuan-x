@@ -1,0 +1,22 @@
+{
+  "key": "collection_appraisal",
+  "name": "藏品鉴定定级审批",
+  "category": "collection",
+  "description": "鉴定申请 → 鉴定委员会审批 → 通过后回写藏品定名、断代、质地与级别。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 100, "y": 200,
+        "properties": { "nodeKey": "start", "name": "发起鉴定", "nodeType": "START" } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 340, "y": 200,
+        "properties": { "nodeKey": "committee", "name": "鉴定组会签", "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT", "assignees": [], "multiInstance": true, "multiInstanceType": "ALL", "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 580, "y": 200,
+        "properties": { "nodeKey": "end", "name": "审批完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "approve_1", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-collection",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-flow",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-museum-device",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-collection-2.0.0.jar",
+          "url": "module-collection-2.0.0.jar",
+          "size": 7677492,
+          "sha512": "ed2d1bd66604da22140d05e089a44b589729205acba2aec3653f1b844ee6307370c37a4a84280be16a3ad182be065955d4c35236a79bea92e2e3889fdc693274",
+          "sha256": "2ebf5fa4fa4bf59569ace6ceef09dadca81d4bc1a9ceea96b41f0d86e5c1afd0",
+          "sha1": "75aaf83a890481b843659486233997f776e8ad89",
+          "md5": "5e0825998d0fa480f9216e57a16fe741"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-message",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-flow",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-museum-device",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-collection-2.0.0.jar",
+          "url": "module-collection-2.0.0.jar",
+          "size": 7677492,
+          "sha512": "ed2d1bd66604da22140d05e089a44b589729205acba2aec3653f1b844ee6307370c37a4a84280be16a3ad182be065955d4c35236a79bea92e2e3889fdc693274",
+          "sha256": "2ebf5fa4fa4bf59569ace6ceef09dadca81d4bc1a9ceea96b41f0d86e5c1afd0",
+          "sha1": "75aaf83a890481b843659486233997f776e8ad89",
+          "md5": "5e0825998d0fa480f9216e57a16fe741"
+        }
+      ]
+    }
+  ]
+}

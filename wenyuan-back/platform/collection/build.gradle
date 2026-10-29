@@ -1,0 +1,29 @@
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    implementation "cn.wenwuyun.cloud:module-common:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-sys:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-message:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-jwt2:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-quartz:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-print:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-module:${cloudVersion}"
+
+    compileOnly("jakarta.servlet:jakarta.servlet-api:$servletVersion")
+
+    api("org.springframework.boot:spring-boot-starter-web")
+
+    compileOnly files('../../libs/aspose-words-24.9-jdk17.jar')
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    runtimeOnly("org.postgresql:postgresql:$postgresqlVersion")
+    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+
+    testImplementation files('../../libs/aspose-words-24.9-jdk17.jar')
+}
+

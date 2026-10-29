@@ -1,0 +1,22 @@
+# 服务器配置
+server:
+  port: 8080
+
+app:
+  errorDetail: true
+
+spring:
+  #    多数据库配置
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/collection_db
+    username: wenwuyun
+    password: Jw2014db
+
+logging:
+  level:
+    Exposed: DEBUG
+    org:
+      springframework:
+        ws: TRACE
+#    org.flowable: DEBUG

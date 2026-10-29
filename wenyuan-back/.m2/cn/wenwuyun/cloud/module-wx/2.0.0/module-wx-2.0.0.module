@@ -1,0 +1,188 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-wx",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-mp",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-open",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-miniapp",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0.jar",
+          "url": "module-wx-2.0.0.jar",
+          "size": 110736,
+          "sha512": "ce8e28081e3eb28a8b4eb45df94a6cb26e140e0d9462913f375a7fe513ec3957521e5cd5a408ce2a5744be0da7c437ab8d2b12d5ea6e9238994fbc5b9ab417bb",
+          "sha256": "3916578a930ac55e2e5313638ff41b1f7a958f031c7881c3f0b8a03e0db2a079",
+          "sha1": "4045d359593dd274ede077bdfdad96bd3895c4e7",
+          "md5": "4b40071306a36647c7071d586204ee7e"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-mp",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-open",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-miniapp",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0.jar",
+          "url": "module-wx-2.0.0.jar",
+          "size": 110736,
+          "sha512": "ce8e28081e3eb28a8b4eb45df94a6cb26e140e0d9462913f375a7fe513ec3957521e5cd5a408ce2a5744be0da7c437ab8d2b12d5ea6e9238994fbc5b9ab417bb",
+          "sha256": "3916578a930ac55e2e5313638ff41b1f7a958f031c7881c3f0b8a03e0db2a079",
+          "sha1": "4045d359593dd274ede077bdfdad96bd3895c4e7",
+          "md5": "4b40071306a36647c7071d586204ee7e"
+        }
+      ]
+    }
+  ]
+}

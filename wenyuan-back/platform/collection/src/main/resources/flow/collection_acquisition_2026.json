@@ -1,0 +1,136 @@
+{
+  "key": "collection_acquisition_2026",
+  "name": "征集法定材料确认",
+  "category": "collection",
+  "description": "核实入藏标准、来源及回避资料，购买征集至少三名独立高级专家意见及估价上限、协议和取得凭据；通过后等待入馆凭证，不自动定级或登账。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start_1",
+        "type": "bpmn:startEvent",
+        "x": 80,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "法定材料齐备申请确认",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "appraise_1",
+        "type": "bpmn:userTask",
+        "x": 260,
+        "y": 200,
+        "properties": {
+          "nodeKey": "appraise",
+          "name": "独立鉴定评估材料复核",
+          "nodeType": "APPROVE",
+          "assigneeType": "ROLE",
+          "assignees": [
+            "COLLECTION_APPRAISAL_COMMITTEE"
+          ],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "review_1",
+        "type": "bpmn:userTask",
+        "x": 440,
+        "y": 200,
+        "properties": {
+          "nodeKey": "review",
+          "name": "保管部门核实入藏条件",
+          "nodeType": "APPROVE",
+          "assigneeType": "ROLE",
+          "assignees": [
+            "COLLECTION_STORAGE_HEAD"
+          ],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "approve_1",
+        "type": "bpmn:userTask",
+        "x": 620,
+        "y": 200,
+        "properties": {
+          "nodeKey": "approve",
+          "name": "征集决策确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "ROLE",
+          "assignees": [
+            "COLLECTION_VICE_DIRECTOR"
+          ],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end_1",
+        "type": "bpmn:endEvent",
+        "x": 800,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已确认，待办理入馆",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "sourceNodeId": "start_1",
+        "targetNodeId": "appraise_1",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "appraise_1",
+        "targetNodeId": "review_1",
+        "properties": {}
+      },
+      {
+        "id": "e3",
+        "sourceNodeId": "review_1",
+        "targetNodeId": "approve_1",
+        "properties": {}
+      },
+      {
+        "id": "e4",
+        "sourceNodeId": "approve_1",
+        "targetNodeId": "end_1",
+        "properties": {}
+      }
+    ]
+  }
+}

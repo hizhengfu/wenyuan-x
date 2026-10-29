@@ -1,0 +1,130 @@
+{
+  "key": "collection_requisition_2026",
+  "name": "馆内藏品提用审批",
+  "category": "collection",
+  "description": "提用部门负责人确认 → 保管部门负责人确认 → 法定代表人或主要负责人批准 → 核对并签署逐件点交，实际出库。馆内审批不代替修复等活动依法需要的行政批准。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起馆内提用",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "department",
+        "type": "bpmn:userTask",
+        "x": 340,
+        "y": 200,
+        "properties": {
+          "nodeKey": "department",
+          "name": "提用部门负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管部门负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "leader",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "leader",
+          "name": "法定代表人或主要负责人批准",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已批准，待逐件点交出库",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "department",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "department",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "leader",
+        "properties": {}
+      },
+      {
+        "id": "e3",
+        "sourceNodeId": "leader",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

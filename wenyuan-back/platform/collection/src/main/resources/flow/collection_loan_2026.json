@@ -1,0 +1,100 @@
+{
+  "key": "collection_loan_2026",
+  "name": "藏品借用确认",
+  "category": "collection",
+  "description": "核实逐件风险、集体研究、签署协议及法定行政手续；保管负责人确认和主要负责人批准后，实际双方各至少两人点交出库。馆内流程不代替行政批准，出借后备案须按期另行办理。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起藏品借用",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管部门负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "leader",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "leader",
+          "name": "法定代表人或主要负责人批准",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已批准，待逐件点交出库",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "leader",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "leader",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

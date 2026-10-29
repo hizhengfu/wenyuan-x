@@ -1,0 +1,176 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-cms",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jsoup",
+          "module": "jsoup",
+          "version": {
+            "requires": "1.16.1"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-freemarker"
+        },
+        {
+          "group": "org.springframework.security",
+          "module": "spring-security-taglibs"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-cms-2.0.0.jar",
+          "url": "module-cms-2.0.0.jar",
+          "size": 948528,
+          "sha512": "97de5f4b0a84bf696a0a048173eedea3f016e2cea23043f5b063906566617a1ab405639345e97b5c156eb6d745f772541eeb5161e48c8979dba6c28be3d77bd0",
+          "sha256": "3fdb8ff52291994318ff6cda4e4236087793c58da748e387cc994c9990d9f2a2",
+          "sha1": "51d048643738bf7a97119dd695716ffb2827002c",
+          "md5": "9ef9dbea1d5f2b17fb2745230db65874"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jsoup",
+          "module": "jsoup",
+          "version": {
+            "requires": "1.16.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-freemarker",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.security",
+          "module": "spring-security-taglibs",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-cms-2.0.0.jar",
+          "url": "module-cms-2.0.0.jar",
+          "size": 948528,
+          "sha512": "97de5f4b0a84bf696a0a048173eedea3f016e2cea23043f5b063906566617a1ab405639345e97b5c156eb6d745f772541eeb5161e48c8979dba6c28be3d77bd0",
+          "sha256": "3fdb8ff52291994318ff6cda4e4236087793c58da748e387cc994c9990d9f2a2",
+          "sha1": "51d048643738bf7a97119dd695716ffb2827002c",
+          "md5": "9ef9dbea1d5f2b17fb2745230db65874"
+        }
+      ]
+    }
+  ]
+}

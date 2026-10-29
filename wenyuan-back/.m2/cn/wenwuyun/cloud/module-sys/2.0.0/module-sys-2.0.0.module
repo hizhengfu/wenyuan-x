@@ -1,0 +1,351 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-sys",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "software.amazon.awssdk",
+          "module": "s3",
+          "version": {
+            "requires": "2.25.27"
+          }
+        },
+        {
+          "group": "org.freemarker",
+          "module": "freemarker",
+          "version": {
+            "requires": "2.3.32"
+          }
+        },
+        {
+          "group": "org.jsoup",
+          "module": "jsoup",
+          "version": {
+            "requires": "1.16.1"
+          }
+        },
+        {
+          "group": "com.github.oshi",
+          "module": "oshi-core-java11",
+          "version": {
+            "requires": "6.9.2"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-api",
+          "version": {
+            "requires": "0.13.0"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-impl",
+          "version": {
+            "requires": "0.13.0"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-jackson",
+          "version": {
+            "requires": "0.13.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-sys-2.0.0.jar",
+          "url": "module-sys-2.0.0.jar",
+          "size": 2526240,
+          "sha512": "67366c792ba6bfa7977e36fc83a6eef4d59e0be16dc9e6ca71657089f75b756105e17988ed55ce72df7f7202ffea9631304a060b692559a1a39ff5309e5923b2",
+          "sha256": "af7499c8f194f2c21417eca5970732aa82220503f4fec147bba15046720dd6a4",
+          "sha1": "b51c52e63208b5525f84ea357331929e2301489d",
+          "md5": "7f0257a0784050ba92cc61295120bc7e"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "software.amazon.awssdk",
+          "module": "s3",
+          "version": {
+            "requires": "2.25.27"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.freemarker",
+          "module": "freemarker",
+          "version": {
+            "requires": "2.3.32"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jsoup",
+          "module": "jsoup",
+          "version": {
+            "requires": "1.16.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.oshi",
+          "module": "oshi-core-java11",
+          "version": {
+            "requires": "6.9.2"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-api",
+          "version": {
+            "requires": "0.13.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-impl",
+          "version": {
+            "requires": "0.13.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-jackson",
+          "version": {
+            "requires": "0.13.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-sys-2.0.0.jar",
+          "url": "module-sys-2.0.0.jar",
+          "size": 2526240,
+          "sha512": "67366c792ba6bfa7977e36fc83a6eef4d59e0be16dc9e6ca71657089f75b756105e17988ed55ce72df7f7202ffea9631304a060b692559a1a39ff5309e5923b2",
+          "sha256": "af7499c8f194f2c21417eca5970732aa82220503f4fec147bba15046720dd6a4",
+          "sha1": "b51c52e63208b5525f84ea357331929e2301489d",
+          "md5": "7f0257a0784050ba92cc61295120bc7e"
+        }
+      ]
+    },
+    {
+      "name": "testFixturesApiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-test"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-sys-2.0.0-test-fixtures.jar",
+          "url": "module-sys-2.0.0-test-fixtures.jar",
+          "size": 16072,
+          "sha512": "d2883b1338cac20083e26b9c7a2802c3d62a31d3748d85eb4ef23484e1dece3ddae3c65e355af39124bf90679f5e66753192086d59aaab4e3d2d60aa1866af7c",
+          "sha256": "414325b64533e2d85edb8034da11de85730fab8caf5ee372ebe159ef77596ab0",
+          "sha1": "758c60f8500056387c5fec466e36ae0d83d9ff80",
+          "md5": "3ccdf53a705d0a7c19f359a6a613ccb0"
+        }
+      ],
+      "capabilities": [
+        {
+          "group": "io.hizhengfu.cloud",
+          "name": "module-sys-test-fixtures",
+          "version": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "testFixturesRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "jakarta.servlet",
+          "module": "jakarta.servlet-api",
+          "version": {
+            "requires": "6.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-test"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-sys-2.0.0-test-fixtures.jar",
+          "url": "module-sys-2.0.0-test-fixtures.jar",
+          "size": 16072,
+          "sha512": "d2883b1338cac20083e26b9c7a2802c3d62a31d3748d85eb4ef23484e1dece3ddae3c65e355af39124bf90679f5e66753192086d59aaab4e3d2d60aa1866af7c",
+          "sha256": "414325b64533e2d85edb8034da11de85730fab8caf5ee372ebe159ef77596ab0",
+          "sha1": "758c60f8500056387c5fec466e36ae0d83d9ff80",
+          "md5": "3ccdf53a705d0a7c19f359a6a613ccb0"
+        }
+      ],
+      "capabilities": [
+        {
+          "group": "io.hizhengfu.cloud",
+          "name": "module-sys-test-fixtures",
+          "version": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

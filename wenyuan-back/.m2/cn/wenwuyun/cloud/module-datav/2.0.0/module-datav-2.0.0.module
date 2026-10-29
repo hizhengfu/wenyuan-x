@@ -1,0 +1,108 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-datav",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-datav-2.0.0.jar",
+          "url": "module-datav-2.0.0.jar",
+          "size": 75331,
+          "sha512": "01104d2a80ee0c9b286d75944e5aea5ddece05fe360b32bac2631fd3c92bf5a0f4dba5187977ae1e9bddf0d13ce3c62ada96770e44c59d85a321f4ae32f8cb77",
+          "sha256": "a27476d93e2f5b6f99503f6d8a06b39e750eb31329ef6791212fe371a7cd274a",
+          "sha1": "105a597d4cc27fde89f3d008f179c4b742db3d3d",
+          "md5": "3ee59d71b57d872a0ee26883859b1916"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-datav-2.0.0.jar",
+          "url": "module-datav-2.0.0.jar",
+          "size": 75331,
+          "sha512": "01104d2a80ee0c9b286d75944e5aea5ddece05fe360b32bac2631fd3c92bf5a0f4dba5187977ae1e9bddf0d13ce3c62ada96770e44c59d85a321f4ae32f8cb77",
+          "sha256": "a27476d93e2f5b6f99503f6d8a06b39e750eb31329ef6791212fe371a7cd274a",
+          "sha1": "105a597d4cc27fde89f3d008f179c4b742db3d3d",
+          "md5": "3ee59d71b57d872a0ee26883859b1916"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "collection_reproduction_2026",
+  "name": "复制拓印方案馆内确认",
+  "category": "collection",
+  "description": "真实行政批文、机构资质及安全方案核实后，保管负责人确认、主要负责人批准；实际开始另行登记，提用出库与归库验收独立办理。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起复制拓印确认",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管部门负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "leader",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "leader",
+          "name": "法定代表人或主要负责人批准",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已批准，待登记实际实施",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "leader",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "leader",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

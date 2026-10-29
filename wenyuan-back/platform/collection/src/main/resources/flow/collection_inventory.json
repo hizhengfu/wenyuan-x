@@ -1,0 +1,22 @@
+{
+  "key": "collection_inventory",
+  "name": "藏品盘点审批",
+  "category": "collection",
+  "description": "盘点登记 → 保管部审批 → 通过后盘点记录生效；盘亏记录通过后再更新藏品状态。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 100, "y": 200,
+        "properties": { "nodeKey": "start", "name": "发起盘点", "nodeType": "START" } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 320, "y": 200,
+        "properties": { "nodeKey": "approve", "name": "保管部审批", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_STORAGE_HEAD"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 540, "y": 200,
+        "properties": { "nodeKey": "end", "name": "审批完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "approve_1", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

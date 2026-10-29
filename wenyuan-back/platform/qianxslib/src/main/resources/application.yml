@@ -1,0 +1,89 @@
+app:
+  #  名称
+  name: 钱学森图书馆
+  #  版本号
+  version: 1.2.0
+  # 分页相关
+  page:
+    # 分页默认大小
+    pageSize: 20
+
+# 用户授权相关
+security:
+  header: Authorization
+  #  密钥
+  secret: 9d&%J|7byHN"{iDL
+  # token 过期时间 2个小时
+  expiration: 7200000
+  #  expiration: 60000
+  code:
+    # 验证码过期时间 单位分钟
+    expiration: 5
+
+
+#api路径
+apiPath: /api/v1
+#网站前端路径
+frontPath: /front
+
+#机器人服务地址
+robotUrl: http://101.133.156.32:8800
+
+#网页后缀
+urlSuffix: .html
+
+
+#文件上传配置
+file:
+  basedir: ./userfiles
+
+
+spring:
+  profiles:
+    active: dev
+  cache:
+    type: caffeine
+  #    caffeine:
+  #      spec: maximumSize=1000,expireAfterAccess=600s
+  #  cache:
+  #    jcache:
+  #      config: classpath:cache/ehcache.xml
+  jackson:
+    time-zone: GMT+8
+    
+    deserialization:
+      FAIL_ON_NULL_FOR_PRIMITIVES: on
+
+  servlet:
+    #    文件上传大小设置
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  mail:
+    host: smtp.qq.com
+    username: 78681293@qq.com
+    password: tehiiwgkypzhbifi
+    protocol: smtp
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          port: 465
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+server:
+  servlet:
+    encoding:
+      enabled: on
+      charset: utf-8
+
+logging:
+  level:
+    #    org.springframework.web.socket.handler: trace
+    org.springframework.web.servlet: INFO
+  file:
+    name: logs/web.log

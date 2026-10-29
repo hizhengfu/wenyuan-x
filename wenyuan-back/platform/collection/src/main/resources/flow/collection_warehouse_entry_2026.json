@@ -1,0 +1,129 @@
+{
+  "key": "collection_warehouse_entry_2026",
+  "name": "人员入库与特殊陪同指定",
+  "category": "collection",
+  "description": "核实实际库管及人员 → 保管负责人确认；仅库管不足两人时，由主要负责人本人指定馆内其他人员陪同 → 实际进出登记。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "申请入库",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 330,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "special",
+        "type": "bpmn:exclusiveGateway",
+        "x": 560,
+        "y": 200,
+        "properties": {
+          "nodeKey": "special",
+          "name": "是否库管不足两人",
+          "nodeType": "EXCLUSIVE"
+        }
+      },
+      {
+        "id": "leader",
+        "type": "bpmn:userTask",
+        "x": 790,
+        "y": 200,
+        "properties": {
+          "nodeKey": "leader",
+          "name": "主要负责人指定特殊陪同",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1020,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "等待实际入库核验",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "start_keeper",
+        "sourceNodeId": "start",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "keeper_special",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "special",
+        "properties": {}
+      },
+      {
+        "id": "special_leader",
+        "sourceNodeId": "special",
+        "targetNodeId": "leader",
+        "properties": {
+          "conditionType": "EXPRESSION",
+          "condition": "#requiresDirector == true",
+          "priority": 1
+        }
+      },
+      {
+        "id": "special_end",
+        "sourceNodeId": "special",
+        "targetNodeId": "end",
+        "properties": {
+          "conditionType": "DEFAULT"
+        }
+      },
+      {
+        "id": "leader_end",
+        "sourceNodeId": "leader",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

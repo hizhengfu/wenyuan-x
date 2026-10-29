@@ -1,0 +1,27 @@
+{
+  "key": "collection_deregister",
+  "name": "退出馆藏内部审批",
+  "category": "collection",
+  "description": "退出方案 → 保管部初审 → 分管馆长确认。内部审批通过后，仍须按适用规定取得主管部门批准、履行公告并签署实际处置；流程结束不代表已退出馆藏。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 100, "y": 200,
+        "properties": { "nodeKey": "start", "name": "发起退出馆藏申请", "nodeType": "START" } },
+      { "id": "review_1", "type": "bpmn:userTask", "x": 300, "y": 200,
+        "properties": { "nodeKey": "review", "name": "保管部初审", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_STORAGE_HEAD"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 500, "y": 200,
+        "properties": { "nodeKey": "approve", "name": "分管馆长审批", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_VICE_DIRECTOR"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 700, "y": 200,
+        "properties": { "nodeKey": "end", "name": "内部审批完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "review_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "review_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e3", "sourceNodeId": "approve_1", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

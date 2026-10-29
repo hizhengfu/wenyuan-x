@@ -1,0 +1,99 @@
+app:
+  #  名称
+  name: 考古工地文物库房管理系统
+  #  版本号
+  version: 1.0.9
+  #  是否显示错误详情
+#  error-detail: true
+  # 分页相关
+  page:
+    # 分页默认大小
+    pageSize: 20
+
+
+#api路径
+apiPath: /api/v1
+#网站前端路径
+frontPath: /front
+#网页后缀
+urlSuffix: .html
+
+#ignorePath: /,/userfiles/**
+
+#文件上传配置
+file:
+  #  secure: true
+  basedir: ./userfiles
+
+
+# 用户授权相关
+security:
+  header: Authorization
+  #  密钥
+  secret: 4>;*B)hzG~cu[|Ts
+  # token 过期时间 2个小时
+  expiration: 31536000000
+  #  expiration: 60000
+  code:
+    # 验证码过期时间 单位分钟
+    expiration: 5
+  publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDB5XNv/DH/3XDUbc+OJ3AJgLfJf8rm5kvsOvT+Ph0CAiGVIGjTEaccrh0QQ78wOeLRvciQhJ+8af5uvepSC7ossGfGaKfTDrt1yPPA8TuGGCEEXwdAycX1ViTB4fHXiyrlDbowhTZwT1GNU/YpoxLk9xUdNjvNz0X/IaWRd91UzQIDAQAB
+  privateKey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMHlc2/8Mf/dcNRtz44ncAmAt8l/yubmS+w69P4+HQICIZUgaNMRpxyuHRBDvzA54tG9yJCEn7xp/m696lILuiywZ8Zop9MOu3XI88DxO4YYIQRfB0DJxfVWJMHh8deLKuUNujCFNnBPUY1T9imjEuT3FR02O83PRf8hpZF33VTNAgMBAAECgYAQzB1nhqwYM+lZ5dd0w7Lfh+CkGqeLwEi0gtkFi4D80w1wu1mJa36UK/tFlPDjrygYrn3JE0w5SN9rXZWGnRB4Nr9ZjO8/4vv5sCDgIknacfJHQLH1SRTSrmonFIiha/KANJg677/iM73D0pSl0p8bAdAl2qCJ0Buqd6RyBE08iwJBAPt52/VwBZHdXt8onlNCDJ/YAYA2MtJBGBMU07CG1Hv/ObCTSzg4YFP0B9NSbLIAoeeMSkO1F9JW+vMvCKCl2TcCQQDFYmpnRy/AX7dcv47H/8yUi/YWpsLBKGUV7zH0jydgPxLozKVopBB+q29B5dhBFlY6S6yQKqlsfOl5YmrG4fQbAkEAuuaCuBOd0B87F5hUs4RvZY1g8C1X8DQ49FWST6yl19KEydtvGEWuMjc4abLk3hbiPfliaJf7MHU85eia/OrGWQJBAMBuFfXh/Le7mPOe/QAWbchUOvISWcQeMY6Ux0r5VRYL589107yUVlBnqevAvHeX4zCqHe3e6ZWOob9pJ1gFaQkCQHDnQ0VZ7i+/6FGgQIuULnCxeKX0vape4ydL+3afqbG1teqJEmgoorCBAsW4F61mhyy/s6nMUJHytHfvzhUIffE=
+
+
+spring:
+  profiles:
+    active: dev
+  cache:
+    type: caffeine
+  #    caffeine:
+  #      spec: maximumSize=1000,expireAfterAccess=600s
+  #  cache:
+  #    jcache:
+  #      config: classpath:cache/ehcache.xml
+  jackson:
+    time-zone: GMT+8
+    deserialization:
+      FAIL_ON_NULL_FOR_PRIMITIVES: on
+  mail:
+    host: smtp.qq.com
+    username: 78681293@qq.com
+    password: tehiiwgkypzhbifi
+    protocol: smtp
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          port: 465
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+  servlet:
+    #    文件上传大小设置
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 30d
+
+#服务配置
+server:
+  compression:
+    enabled: true
+  servlet:
+    encoding:
+      enabled: on
+      charset: utf-8
+
+logging:
+  level:
+    #    org.springframework.web.socket.handler: trace
+    org.springframework.web.servlet: INFO
+  file:
+    name: logs/wms.log

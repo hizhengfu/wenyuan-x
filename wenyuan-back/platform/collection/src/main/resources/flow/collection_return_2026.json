@@ -1,0 +1,70 @@
+{
+  "key": "collection_return_2026",
+  "name": "藏品归还逐件验收确认",
+  "category": "collection",
+  "description": "逐件核验真实性和保存状况、双方实际签署，保管负责人本人确认后登记接收；异常件继续待核查，完成双方说明、调查及实际报告后解除。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start_1",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起归还",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "approve_1",
+        "type": "bpmn:userTask",
+        "x": 320,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管负责人确认逐件验收及异常保管",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end_1",
+        "type": "bpmn:endEvent",
+        "x": 540,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已确认，待登记接收",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "sourceNodeId": "start_1",
+        "targetNodeId": "approve_1",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "approve_1",
+        "targetNodeId": "end_1",
+        "properties": {}
+      }
+    ]
+  }
+}

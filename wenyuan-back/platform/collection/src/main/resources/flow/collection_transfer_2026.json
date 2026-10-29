@@ -1,0 +1,160 @@
+{
+  "key": "collection_transfer_2026",
+  "name": "藏品交换调拨确认",
+  "category": "collection",
+  "description": "核实法定行政文书 → 源馆保管确认及主要负责人批准 → 接收馆保管确认及主要负责人批准 → 实际签署后逐件过户，原馆总账永久留存。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起交换调拨",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "source_keeper",
+        "type": "bpmn:userTask",
+        "x": 340,
+        "y": 200,
+        "properties": {
+          "nodeKey": "source_keeper",
+          "name": "源馆保管负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "source_leader",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "source_leader",
+          "name": "源馆依法负责人员确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "target_keeper",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "target_keeper",
+          "name": "接收馆保管负责人确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "target_leader",
+        "type": "bpmn:userTask",
+        "x": 1060,
+        "y": 200,
+        "properties": {
+          "nodeKey": "target_leader",
+          "name": "接收馆主要负责人批准",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1300,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "已确认，待签署交接",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "source_keeper",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "source_keeper",
+        "targetNodeId": "source_leader",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "source_leader",
+        "targetNodeId": "target_keeper",
+        "properties": {}
+      },
+      {
+        "id": "e3",
+        "sourceNodeId": "target_keeper",
+        "targetNodeId": "target_leader",
+        "properties": {}
+      },
+      {
+        "id": "e4",
+        "sourceNodeId": "target_leader",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

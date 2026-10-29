@@ -1,0 +1,140 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-mybatis",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-mybatis-2.0.0.jar",
+          "url": "module-mybatis-2.0.0.jar",
+          "size": 21780,
+          "sha512": "d1c79cc4ac4bf1c2c41c4ee19bafe277ca7ea1af295e8ec6c70b433a219aab62cdc8475fc35140074ba75287e06ccef8221634ca3f7b045bf34317a2a7eb6154",
+          "sha256": "cb282a0239143b93379e98f57a0b50564f5a5728eedf32a49c52bbd9ee0342c5",
+          "sha1": "c8559ee599aee81ad4f231f1c41710f5ec201a33",
+          "md5": "60d34180190d406a9a682eb9d6a0be23"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-mybatis-2.0.0.jar",
+          "url": "module-mybatis-2.0.0.jar",
+          "size": 21780,
+          "sha512": "d1c79cc4ac4bf1c2c41c4ee19bafe277ca7ea1af295e8ec6c70b433a219aab62cdc8475fc35140074ba75287e06ccef8221634ca3f7b045bf34317a2a7eb6154",
+          "sha256": "cb282a0239143b93379e98f57a0b50564f5a5728eedf32a49c52bbd9ee0342c5",
+          "sha1": "c8559ee599aee81ad4f231f1c41710f5ec201a33",
+          "md5": "60d34180190d406a9a682eb9d6a0be23"
+        }
+      ]
+    }
+  ]
+}

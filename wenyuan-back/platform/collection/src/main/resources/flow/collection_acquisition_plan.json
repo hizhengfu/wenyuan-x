@@ -1,0 +1,27 @@
+{
+  "key": "collection_acquisition_plan",
+  "name": "藏品征集计划审批",
+  "category": "collection",
+  "description": "年度/月度征集计划编制 → 鉴定委员会（专家）评审 → 分管馆长审批。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 100, "y": 200,
+        "properties": { "nodeKey": "start", "name": "计划编制", "nodeType": "START" } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 320, "y": 200,
+        "properties": { "nodeKey": "committee", "name": "专家评审", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_APPRAISAL_COMMITTEE"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "approve_2", "type": "bpmn:userTask", "x": 540, "y": 200,
+        "properties": { "nodeKey": "vice_director", "name": "分管馆长审批", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_VICE_DIRECTOR"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 760, "y": 200,
+        "properties": { "nodeKey": "end", "name": "审批完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "approve_1", "targetNodeId": "approve_2", "properties": {} },
+      { "id": "e3", "sourceNodeId": "approve_2", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

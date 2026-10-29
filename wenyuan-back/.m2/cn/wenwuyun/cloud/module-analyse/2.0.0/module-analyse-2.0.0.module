@@ -1,0 +1,128 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-analyse",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-analyse-2.0.0.jar",
+          "url": "module-analyse-2.0.0.jar",
+          "size": 55816,
+          "sha512": "6f014750233d567337d739a02c22e96cbf6dcd7df0131817b80001120d02e2646f19d07a3f21abf2a2541c12542c280837b804d75d30405933a207542e6a5945",
+          "sha256": "f3c6675275746a2ba246ea70a312b92b4703ad24da42565994a18c1f9ff66937",
+          "sha1": "5dca46184d37046341445918db42c30f6ad01410",
+          "md5": "a5b6c4a9d22e69a591eb208269927782"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-analyse-2.0.0.jar",
+          "url": "module-analyse-2.0.0.jar",
+          "size": 55816,
+          "sha512": "6f014750233d567337d739a02c22e96cbf6dcd7df0131817b80001120d02e2646f19d07a3f21abf2a2541c12542c280837b804d75d30405933a207542e6a5945",
+          "sha256": "f3c6675275746a2ba246ea70a312b92b4703ad24da42565994a18c1f9ff66937",
+          "sha1": "5dca46184d37046341445918db42c30f6ad01410",
+          "md5": "a5b6c4a9d22e69a591eb208269927782"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "collection_sampling_2026",
+  "name": "有损取样共同方案确认",
+  "category": "collection",
+  "description": "保护修复部门会同保管部门共同制定最小干预取样方案；一级文物先评估替代，实际实施另须核验分级行政批准和原件取用。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起有损取样共同方案确认",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "conservation",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "conservation",
+          "name": "保护修复部门责任人员确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管部门负责人共同确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "共同方案已确认，待实际许可与取样",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "conservation",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "conservation",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

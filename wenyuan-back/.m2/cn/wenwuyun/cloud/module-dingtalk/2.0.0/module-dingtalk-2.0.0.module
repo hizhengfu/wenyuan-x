@@ -1,0 +1,128 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-dingtalk",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-dingtalk-2.0.0.jar",
+          "url": "module-dingtalk-2.0.0.jar",
+          "size": 22332,
+          "sha512": "65a06806f3f51134e3d15bf989136ca8d752ba0960054b8890bf04a73461cfb13fb096c6558e4dad3be5e71274a91d24d7a2a4f18c3e97d9782fbb24307233e6",
+          "sha256": "922fda1e65a4fbb5ed225361b906ee73a6964abcd787374b928b63916d691a33",
+          "sha1": "e7ad344739b9816aca358795738337d3247db34c",
+          "md5": "de433c3415e22dee7a0fad61ae205790"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-dingtalk-2.0.0.jar",
+          "url": "module-dingtalk-2.0.0.jar",
+          "size": 22332,
+          "sha512": "65a06806f3f51134e3d15bf989136ca8d752ba0960054b8890bf04a73461cfb13fb096c6558e4dad3be5e71274a91d24d7a2a4f18c3e97d9782fbb24307233e6",
+          "sha256": "922fda1e65a4fbb5ed225361b906ee73a6964abcd787374b928b63916d691a33",
+          "sha1": "e7ad344739b9816aca358795738337d3247db34c",
+          "md5": "de433c3415e22dee7a0fad61ae205790"
+        }
+      ]
+    }
+  ]
+}

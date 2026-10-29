@@ -1,0 +1,154 @@
+buildscript {
+    repositories {
+        maven {
+            url = 'https://maven.aliyun.com/repository/central'
+        }
+        /*maven {
+            url 'https://repo.spring.io/plugins-release/'
+        }*/
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+
+/**
+ * 复制文件到目标目录
+ * */
+task copyJar(type: Copy) {
+    from("module/common/build/libs",
+            "module/cms/build/libs",
+            "module/jwt/build/libs",
+            "module/module/build/libs",
+            "module/sys/build/libs",
+            "module/quartz/build/libs",
+            "module/wx/build/libs"
+    )
+    into "/Users/hizhengfu/Documents/project/kotlin/web-cloud-v2/libs"
+}
+
+
+//子项目配置
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'kotlin'
+    apply plugin: 'kotlin-spring'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'idea'
+
+    group = 'io.hizhengfu.cloud'
+    version = '2.0.0'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        compilerOptions {
+            // 与 Java 及共享模块保持一致，避免随 IDE 的 Gradle JDK 改变目标版本。
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
+    }
+
+
+    /*
+    自动生成项目依赖pom的方式便于发布带依赖的jar包
+    apply plugin: 'maven-publish'
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+    }*/
+
+    jar {
+        enabled = false
+        archiveClassifier = ""
+    }
+
+    bootJar {
+//        launchScript()
+//        exclude 'application.yml'
+        exclude '*-dev.yml'
+        exclude 'sample.yml'
+//        exclude '*-prod.yml'
+//        exclude '**/static/**'
+        exclude '**/templates/**'
+
+        filteringCharset = 'UTF-8'
+        filesMatching('application.yml') {
+            filter { line -> line.replaceAll('active: dev', 'active: prod') }
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        // web-cloud2 module/* 通过 maven-publish 发布到此目录，自动解析传递依赖
+        maven {
+            url = uri("$rootDir/.m2")
+        }
+        mavenLocal()
+        maven {
+            url = "https://repo.osgeo.org/repository/release/"
+        }
+//        maven {
+//            url = 'https://maven.aliyun.com/repository/central'
+//        }
+        mavenCentral()
+
+        /*maven {
+            url 'https://repo.spring.io/plugins-release/'
+        }*/
+    }
+
+    configurations {
+        implementation {
+            //排除tomcat
+            // In-memory verification is allowed only in explicitly opted-in test classpaths.
+            if (!(project.name in ['platform-lucheng', 'platform-jiangxi_wander'])) {
+                exclude group: 'com.h2database', module: 'h2'
+            }
+        }
+    }
+
+    if (project.name in ['platform-lucheng', 'platform-jiangxi_wander']) {
+        configurations.matching { it.name in ['compileClasspath', 'runtimeClasspath'] }.configureEach {
+            exclude group: 'com.h2database', module: 'h2'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+
+// platform/* 增量部署产物：把 bootJar 拆为「瘦 jar（百 KB 级）+ lib/ 目录」，
+// 服务器上 lib/ 长期不变，日常发版只传瘦 jar；依赖变化时 rsync 增量同步 lib。
+// 用法：./gradlew :platform-xxx:extractBootJar  → 产物在 platform/xxx/build/deploy/
+// 部署说明见 doc/deploy-incremental.md
+subprojects { sub ->
+    if (!sub.path.startsWith(':platform-')) return
+
+    sub.tasks.register('extractBootJar', Exec) {
+        group = 'build'
+        description = '将 bootJar 拆为瘦 jar + lib/ 目录（增量部署用，产物在 build/deploy）'
+        dependsOn sub.tasks.named('bootJar')
+        doFirst {
+            def jarFile = sub.tasks.named('bootJar').get().archiveFile.get().asFile
+            def dest = sub.layout.buildDirectory.dir('deploy').get().asFile
+            sub.delete(dest)
+            commandLine("${System.getProperty('java.home')}/bin/java",
+                    '-Djarmode=tools', '-jar', jarFile.absolutePath,
+                    'extract', '--destination', dest.absolutePath)
+        }
+    }
+}

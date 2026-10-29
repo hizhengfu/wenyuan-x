@@ -1,0 +1,24 @@
+rootProject.name = "web-cloud-back-v2"
+
+/**
+ * 自动扫描目录下的文件夹生成项目
+ * */
+rootDir.eachDir { dir ->
+    if (dir.name.startsWithAny('module', 'platform') && !dir.name.endsWithAny('temp', '_')) {
+        dir.eachDir { sub ->
+            if (!sub.list(new FilenameFilter() {
+                @Override
+                boolean accept(File dir1, String name) {
+                    return "build.gradle" == name
+                }
+            })) return
+
+            def projectName = ":${dir.name}-${sub.name}"
+            def path = "./${dir.name}/${sub.name}"
+
+            include projectName
+
+            project(projectName).projectDir = file(path)
+        }
+    }
+}

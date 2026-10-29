@@ -1,0 +1,22 @@
+{
+  "key": "collection_return",
+  "name": "藏品归还入库审批",
+  "category": "collection",
+  "description": "归还申请 → 保管部验收审批 → 通过后入库回库。由提用、借展等出库业务自动生成草稿。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 100, "y": 200,
+        "properties": { "nodeKey": "start", "name": "发起归还", "nodeType": "START" } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 320, "y": 200,
+        "properties": { "nodeKey": "approve", "name": "保管部验收", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_STORAGE_HEAD"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 540, "y": 200,
+        "properties": { "nodeKey": "end", "name": "审批完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "approve_1", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

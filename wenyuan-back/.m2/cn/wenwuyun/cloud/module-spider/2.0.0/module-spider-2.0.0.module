@@ -1,0 +1,140 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-spider",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-spider-2.0.0.jar",
+          "url": "module-spider-2.0.0.jar",
+          "size": 278441,
+          "sha512": "4fa49d70655175896751edc6b83bbdbb7bfe4053b4923652d036680b58d296c715bd0bc50e277157baeb103541e286d22ef2299e56c84bdf856506ef3c1a9a2b",
+          "sha256": "35e0c6dd800ecdb7e9731e9a8b3163e9e2a1786d869e0257008b862f302b7372",
+          "sha1": "a85a174e0ea71060342b3b056f0aec9b364d7277",
+          "md5": "9440a4ca0b7be13557331d6157dd920d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "us.codecraft",
+          "module": "webmagic-core",
+          "version": {
+            "requires": "1.0.3"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.microsoft.playwright",
+          "module": "playwright",
+          "version": {
+            "requires": "1.49.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jsoup",
+          "module": "jsoup",
+          "version": {
+            "requires": "1.16.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-spider-2.0.0.jar",
+          "url": "module-spider-2.0.0.jar",
+          "size": 278441,
+          "sha512": "4fa49d70655175896751edc6b83bbdbb7bfe4053b4923652d036680b58d296c715bd0bc50e277157baeb103541e286d22ef2299e56c84bdf856506ef3c1a9a2b",
+          "sha256": "35e0c6dd800ecdb7e9731e9a8b3163e9e2a1786d869e0257008b862f302b7372",
+          "sha1": "a85a174e0ea71060342b3b056f0aec9b364d7277",
+          "md5": "9440a4ca0b7be13557331d6157dd920d"
+        }
+      ]
+    }
+  ]
+}

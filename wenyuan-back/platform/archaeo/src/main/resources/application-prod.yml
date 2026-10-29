@@ -1,0 +1,12 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/asa_wms?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useInformationSchema=true&nullCatalogMeansCurrent=true
+    username: asa_wms
+    password: wbj}E(2$Kg)icU=y
+  web:
+    resources:
+      static-locations: file:./static/

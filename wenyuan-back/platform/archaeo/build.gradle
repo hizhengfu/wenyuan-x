@@ -1,0 +1,20 @@
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    implementation "cn.wenwuyun.cloud:module-common:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-sys:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-message:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-jwt:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-quartz:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-print:${cloudVersion}"
+    implementation "cn.wenwuyun.cloud:module-module:${cloudVersion}"
+
+//数据库驱动
+    runtimeOnly("com.mysql:mysql-connector-j:$mysqlVersion")
+    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+

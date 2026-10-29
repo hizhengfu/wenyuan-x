@@ -1,0 +1,100 @@
+{
+  "key": "collection_digital_acquisition_2026",
+  "name": "数字采集操作与安全方案共同确认",
+  "category": "collection",
+  "description": "由实际信息化部门会同保管部门制定操作及安全工作方案；共同确认后另行办理实际采集和数字资源质量安全复核。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起数字采集方案确认",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "information",
+        "type": "bpmn:userTask",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "information",
+          "name": "信息化部门责任人员确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "keeper",
+        "type": "bpmn:userTask",
+        "x": 820,
+        "y": 200,
+        "properties": {
+          "nodeKey": "keeper",
+          "name": "保管部门负责人共同确认",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end",
+        "type": "bpmn:endEvent",
+        "x": 1100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "方案已确认，待实际采集",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "sourceNodeId": "start",
+        "targetNodeId": "information",
+        "properties": {}
+      },
+      {
+        "id": "e1",
+        "sourceNodeId": "information",
+        "targetNodeId": "keeper",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "keeper",
+        "targetNodeId": "end",
+        "properties": {}
+      }
+    ]
+  }
+}

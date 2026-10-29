@@ -1,0 +1,72 @@
+{
+  "key": "collection_appraisal_2026",
+  "name": "藏品馆内鉴选意见确认",
+  "category": "collection",
+  "description": "馆内鉴选意见会签并留存结论；正式级别须另行核实省级行政定级和备案，一级文物还须省级报国家备案，再按初始编目或信息变更办理。",
+  "model": {
+    "nodes": [
+      {
+        "id": "start_1",
+        "type": "bpmn:startEvent",
+        "x": 100,
+        "y": 200,
+        "properties": {
+          "nodeKey": "start",
+          "name": "发起鉴定",
+          "nodeType": "START"
+        }
+      },
+      {
+        "id": "approve_1",
+        "type": "bpmn:userTask",
+        "x": 340,
+        "y": 200,
+        "properties": {
+          "nodeKey": "committee",
+          "name": "鉴定组会签",
+          "nodeType": "APPROVE",
+          "assigneeType": "SELF_SELECT",
+          "assignees": [],
+          "multiInstance": true,
+          "multiInstanceType": "ALL",
+          "rejectType": "TERMINATE",
+          "actions": [
+            "APPROVE",
+            "REJECT"
+          ],
+          "fieldPerms": [
+            {
+              "field": "*",
+              "perm": "READONLY"
+            }
+          ]
+        }
+      },
+      {
+        "id": "end_1",
+        "type": "bpmn:endEvent",
+        "x": 580,
+        "y": 200,
+        "properties": {
+          "nodeKey": "end",
+          "name": "审批完成",
+          "nodeType": "END"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "sourceNodeId": "start_1",
+        "targetNodeId": "approve_1",
+        "properties": {}
+      },
+      {
+        "id": "e2",
+        "sourceNodeId": "approve_1",
+        "targetNodeId": "end_1",
+        "properties": {}
+      }
+    ]
+  }
+}

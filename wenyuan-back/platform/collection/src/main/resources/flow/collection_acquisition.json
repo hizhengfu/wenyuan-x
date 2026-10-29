@@ -1,0 +1,32 @@
+{
+  "key": "collection_acquisition",
+  "name": "藏品征集审批",
+  "category": "collection",
+  "description": "征集申请 → 鉴定委员会鉴定定级 → 保管部主任审核 → 分管馆长审批 → 自动登账。可在设计器中调整审批链。",
+  "model": {
+    "nodes": [
+      { "id": "start_1", "type": "bpmn:startEvent", "x": 80, "y": 200,
+        "properties": { "nodeKey": "start", "name": "发起征集", "nodeType": "START" } },
+      { "id": "appraise_1", "type": "bpmn:userTask", "x": 260, "y": 200,
+        "properties": { "nodeKey": "appraise", "name": "鉴定定级", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_APPRAISAL_COMMITTEE"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "review_1", "type": "bpmn:userTask", "x": 440, "y": 200,
+        "properties": { "nodeKey": "review", "name": "保管部审核", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_STORAGE_HEAD"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "approve_1", "type": "bpmn:userTask", "x": 620, "y": 200,
+        "properties": { "nodeKey": "approve", "name": "分管馆长审批", "nodeType": "APPROVE",
+          "assigneeType": "ROLE", "assignees": ["COLLECTION_VICE_DIRECTOR"], "rejectType": "TERMINATE",
+          "actions": ["APPROVE", "REJECT"], "fieldPerms": [{ "field": "*", "perm": "READONLY" }] } },
+      { "id": "end_1", "type": "bpmn:endEvent", "x": 800, "y": 200,
+        "properties": { "nodeKey": "end", "name": "征集完成", "nodeType": "END" } }
+    ],
+    "edges": [
+      { "id": "e1", "sourceNodeId": "start_1", "targetNodeId": "appraise_1", "properties": {} },
+      { "id": "e2", "sourceNodeId": "appraise_1", "targetNodeId": "review_1", "properties": {} },
+      { "id": "e3", "sourceNodeId": "review_1", "targetNodeId": "approve_1", "properties": {} },
+      { "id": "e4", "sourceNodeId": "approve_1", "targetNodeId": "end_1", "properties": {} }
+    ]
+  }
+}

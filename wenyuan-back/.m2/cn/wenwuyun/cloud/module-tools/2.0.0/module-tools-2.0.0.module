@@ -1,0 +1,88 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-tools",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-tools-2.0.0.jar",
+          "url": "module-tools-2.0.0.jar",
+          "size": 2554,
+          "sha512": "267a6ba27d2a47d9527978531255595f537beb50691c192083c597ed67d2fa1aa88f7545609bacb32fdbf529efd0e3f670b34be8d77edb2ba6540be7f7e4a97d",
+          "sha256": "3b756f23b16d2a9f169e347864b8d00e5512c65e93f0a69c664cde26def4ff50",
+          "sha1": "b0f4dc6f7bcedf7cdc945a0267e85e24b59c1beb",
+          "md5": "306d780dc9955a9018336e185f702390"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-tools-2.0.0.jar",
+          "url": "module-tools-2.0.0.jar",
+          "size": 2554,
+          "sha512": "267a6ba27d2a47d9527978531255595f537beb50691c192083c597ed67d2fa1aa88f7545609bacb32fdbf529efd0e3f670b34be8d77edb2ba6540be7f7e4a97d",
+          "sha256": "3b756f23b16d2a9f169e347864b8d00e5512c65e93f0a69c664cde26def4ff50",
+          "sha1": "b0f4dc6f7bcedf7cdc945a0267e85e24b59c1beb",
+          "md5": "306d780dc9955a9018336e185f702390"
+        }
+      ]
+    }
+  ]
+}
