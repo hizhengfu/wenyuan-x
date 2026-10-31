@@ -1,0 +1,128 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-control",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-control-2.0.0.jar",
+          "url": "module-control-2.0.0.jar",
+          "size": 288364,
+          "sha512": "83c0cc7527b7c6b9857c7392a671fbeff88d2afda28e5870d5d373233f9b4c94f7360157082a9e2a1098a3528bd8b25f28e447a9a9797403683bf1a53b8c8e32",
+          "sha256": "c3712a0e2fd282a3b7de144edbcd0b7d2e8f1b1133c268a41c3aaacf6d226348",
+          "sha1": "33d24536547d2c8ff43f5424d4d545ce27150d3a",
+          "md5": "0290a7633d663310c036430d669da11c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-control-2.0.0.jar",
+          "url": "module-control-2.0.0.jar",
+          "size": 288364,
+          "sha512": "83c0cc7527b7c6b9857c7392a671fbeff88d2afda28e5870d5d373233f9b4c94f7360157082a9e2a1098a3528bd8b25f28e447a9a9797403683bf1a53b8c8e32",
+          "sha256": "c3712a0e2fd282a3b7de144edbcd0b7d2e8f1b1133c268a41c3aaacf6d226348",
+          "sha1": "33d24536547d2c8ff43f5424d4d545ce27150d3a",
+          "md5": "0290a7633d663310c036430d669da11c"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/components.d.ts
+/stats.html
+
+**/route.ts
+/temp
+tsconfig.private.json
+.superpowers
+docs
+# The daily operations log is a source page, not a runtime log directory.
+!src/platforms/lucheng/views/operation/logs/
+!src/platforms/lucheng/views/operation/logs/**
+.pnpm-store/
+.pnpm-cache/
+.pnpm-state/
+.vite/

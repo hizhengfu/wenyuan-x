@@ -1,0 +1,175 @@
+{
+  "sceneVerticalDistance": "垂直距离",
+  "sceneStraightDistance": "净空距离",
+  "sceneHorizontalDistance": "水平距离",
+  "sag": "弧垂",
+  "towerAngle": "杆塔倾角",
+  "scenePOIDefaultName": "兴趣点",
+  "scenePOIAreaDefaultName": "关注区域",
+  "scenePOIAreaMeasureDefaultName": "区域测量",
+  "scenePOILineDefaultName": "兴趣点",
+  "mapTileDefaultName": "地图磁贴",
+  "AdvancedMeasurement": "高级测量",
+  "logo": "assets/images/logo.png",
+  "systemName": "湖南超高压公司高性能三维系统",
+  "leanManagementN": "精益化管理",
+  "simulationAnalysisN": "模拟分析",
+  "toolsManagementN": "工具管理",
+  "dangerPoint": "危险点",
+  "crossing": "交叉跨域",
+  "tagManagement": "标记管理",
+  "userN": "用户名",
+  "sceneInfoN": "线路管理",
+  "deviceTreeN": "设备树管理",
+  "dataLayerN": "数据图层",
+  "selectAllN": "全部",
+  "isSelectAllN": "显示/隐藏所有杆塔",
+  "onSceneExplorerN": "收起",
+  "offSceneExplorerN": "展开",
+  "scenePOIAnnotateDefaultName": "点标注",
+  "toolAnnotateStart": "点击一个点来打点...",
+  "popupCancel": "取消",
+  "complete": "完成",
+  "interestPoint": "兴趣点",
+  "areaMeasure": "面积测量",
+  "lineMeasure": "距离测量",
+  "toolsTopList": [
+    {
+      "label": "绘制",
+      "value": "draw",
+      "icon": "iconfont icon-draw"
+    }
+  ],
+  "toolsBottomList": [
+    {
+      "value": "reset",
+      "icon": "iconfont icon-reset"
+    },
+    {
+      "value": "zoomIn",
+      "icon": "iconfont icon-zoomIn"
+    },
+    {
+      "value": "zoomOut",
+      "icon": "iconfont icon-zoomOut"
+    }
+  ],
+  "drawToolList": [
+    {
+      "label": "点",
+      "value": "point",
+      "icon": "iconfont icon-pointMeasure"
+    },
+    {
+      "label": "直线",
+      "value": "line",
+      "icon": "iconfont icon-lineMeasure"
+    },
+    {
+      "label": "面积",
+      "value": "polygon",
+      "icon": "iconfont icon-polygonMeasure"
+    },
+    {
+      "label": "高度",
+      "value": "height",
+      "icon": "iconfont icon-heightMeasure"
+    }
+  ],
+  "classificationName": [
+    {
+      "label": "地面",
+      "value": 2
+    },
+    {
+      "label": "中等高度植被",
+      "value": 4
+    },
+    {
+      "label": "建筑物",
+      "value": 6
+    },
+    {
+      "label": "地线",
+      "value": 16
+    },
+    {
+      "label": "导线",
+      "value": 17
+    },
+    {
+      "label": "铁塔",
+      "value": 18
+    },
+    {
+      "label": "交叉跨越上",
+      "value": 19
+    },
+    {
+      "label": "交叉跨越下",
+      "value": 20
+    },
+    {
+      "label": "绝缘子",
+      "value": 27
+    }
+  ],
+  "topologicalGraph_110": "110千伏",
+  "topologicalGraph_220": "220千伏",
+  "topologicalGraph_500": "500千伏",
+  "topologicalGraph_800": "800千伏",
+  "showTopologicalGraph": "显示/隐藏拓扑图",
+  "mapSelect": "地图选择",
+  "customMapAddr": "自定义瓦片服务地址",
+  "customAttribute": "自定义归因",
+  "mapHeight": "地图高度",
+  "mapTransparency": "不透明度",
+  "mapMaxDepth": "最大深度",
+  "create": "创建",
+  "settings": "设置",
+  "settingsControls": "输入和控制",
+  "settingsTerrain": "地形",
+  "settingsVis": "可视化",
+  "settingsTools": "工具",
+  "screenSpaceCompare": "数据对比",
+  "screenspaceCompareResetUDS": "重置",
+  "screenspaceCompareClickUDSInScene": "单击场景资源管理器或场景中的 UDS 以选择",
+  "screenspaceCompareSelectUDS": "选择 UDS",
+  "screenspaceCompareSelectUDSToCompare": "选择 UDS 进行比较",
+  "measureMode": [
+    {
+      "label": "地物到导线",
+      "value": "itemToLine"
+    },
+    {
+      "label": "导线到地物",
+      "value": "lineToItem"
+    },
+    {
+      "label": "弧垂测量",
+      "value": "sagMeasure"
+    },
+    {
+      "label": "塔基倾斜角测量",
+      "value": "towerAngle"
+    }
+  ],
+  "lineToItem": [
+    {
+      "label": "导线到地面",
+      "value": 2
+    },
+    {
+      "label": "导线到植被",
+      "value": 4
+    },
+    {
+      "label": "导线到建筑物",
+      "value": 6
+    },
+    {
+      "label": "导线到交跨线",
+      "value": 20
+    }
+  ]
+}

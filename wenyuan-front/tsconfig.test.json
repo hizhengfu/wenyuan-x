@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.test.ts", "tests/**/*.ts", "vitest.config.ts", "vitest.map3d.config.ts"],
+  "exclude": ["dist", "node_modules", "resource", "tests/contracts"]
+}

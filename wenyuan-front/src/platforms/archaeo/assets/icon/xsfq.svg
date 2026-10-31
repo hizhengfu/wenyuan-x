@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <rect x="160" y="200" width="704" height="624" rx="40" fill="none" stroke="currentColor" stroke-width="50"/>
+  <g fill="none" stroke="currentColor" stroke-width="38" stroke-linecap="round">
+    <path d="M160 408 864 408"/>
+    <path d="M160 616 864 616"/>
+    <path d="M395 200 395 824"/>
+    <path d="M629 200 629 824"/>
+  </g>
+  <g fill="currentColor">
+    <rect x="234" y="284" width="92" height="46" rx="10"/>
+    <rect x="468" y="486" width="86" height="46" rx="10"/>
+    <rect x="702" y="694" width="86" height="46" rx="10"/>
+  </g>
+</svg>

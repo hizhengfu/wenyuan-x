@@ -1,0 +1,74 @@
+<table>
+  <colgroup>
+    <col style='width: 50px;'>
+  </colgroup>
+  <tr>
+    <th class='text-center' colspan='11'>库房文物出库凭证</th>
+  </tr>
+  <tr>
+    <td colspan='2'>日期：</td>
+    <td colspan='4'>
+      <%= data.printDate %>
+    </td>
+    <td>NO：</td>
+    <td colspan='4'>
+      <%= data.code %>
+    </td>
+  </tr>
+  <tr>
+    <td class='text-center' colspan='11'>出库记录</td>
+  </tr>
+  <tr>
+    <td>序号</td>
+    <td>文物图片</td>
+    <td>文物编号</td>
+    <td>文物名称</td>
+    <td>件数</td>
+    <td>出库完残情况</td>
+    <td>出库原因</td>
+    <td>文物去向</td>
+    <td>是否归还</td>
+    <td>预计归还时间</td>
+    <td>备注</td>
+  </tr>
+  <% forEach(data.list, function(item,index) { %>
+  <tr>
+    <td class='text-center'><%= index+1 %></td>
+    <td>
+      <%= item.image?`<img src='`+item.image+`?h=22&w=42'>`:''%>
+    </td>
+    <td><%= item.code %></td>
+    <td><%= item.name %></td>
+    <td class='text-right'><%= item.quantity %></td>
+    <td><%= item.saveStatus %></td>
+    <td><%= get(data,'operationDetail.outPurpose') %></td>
+    <td><%= get(data,'operationDetail.artifactDest') %></td>
+    <td><%= get(data,'operationDetail.needReturn') %></td>
+    <td><%= get(data,'operationDetail.expectedReturn') %></td>
+    <td><%= data.remarks %></td>
+  </tr>
+  <% }); %>
+  <tr>
+    <td colspan='2'>出库时间</td>
+    <td colspan='2'><%= data.operationTime %></td>
+    <td colspan='2'>经办人（签字）</td>
+    <td colspan='2'><%= data.operatorBy %></td>
+    <td>接收人（签字）</td>
+    <td colspan='2'><%= get(data,'operationDetail.receiver') %></td>
+  </tr>
+  <tr>
+    <td class='text-center' colspan='11'>归库记录</td>
+  </tr>
+  <tr>
+    <td colspan='2'>文物归库状态</td>
+    <td colspan='9'></td>
+  </tr>
+  <tr>
+    <td colspan='2'>归还时间</td>
+    <td colspan='2'></td>
+    <td colspan='2'>归还人（签字）</td>
+    <td colspan='2'></td>
+    <td>经办人（签字）</td>
+    <td colspan='2'></td>
+  </tr>
+</table>

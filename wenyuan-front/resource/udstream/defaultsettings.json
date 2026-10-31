@@ -1,0 +1,54 @@
+{
+  "uiLevel": 1,
+  "uiScale": 1.000000,
+  "showEuclideonLogo": false,
+  "login": {
+    "serverURL": "https://udstream.eulee.cn",
+    "username": "",
+    "password": "",
+    "proxy": "",
+    "useragent": "",
+    "ignoreCertificateErrors": false,
+    "proxyRequiresAuth": false,
+    "rememberProxyUsername": false
+  },
+  "skybox": {
+    "type": 3,
+    "colour": [
+      0.39,
+      0.58,
+      0.66,
+      1.0
+    ],
+    "exposure": 7.5,
+    "timeOfDay": 12.0,
+    "month": 3.0,
+    "keepSameTime": true,
+    "uselivetime": false
+  },
+  "maptiles": {
+    "demEnabled": true,
+    "DEMServerURL": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/tile/{0}/{2}/{1}",
+    "DEMMaxLevels": 13,
+    "mapQuality": 2,
+    "mapOptions": 0,
+    "keepAboveSurface": true
+  },
+  "tools": {
+    "line": {
+      "width": 2
+    }
+  },
+  "layout": 2,
+  "POIfadeDistance": 500000,
+  "ImageRescaleDistance": 10000,
+  "mouseSnap": {
+    "range": 10
+  },
+  "prepareScene": false,
+  "objectHighlighting": {
+    "enable": true
+  },
+  "defaultEpsg": 4978,
+  "info": "This settings file can be used to override the internal defaults of udStream when the user hasn't run it before- useful when deploying the application to enterprise"
+}

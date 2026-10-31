@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <rect x="150" y="150" width="334" height="334" rx="40" fill="none" stroke="currentColor" stroke-width="48"/>
+  <circle cx="252" cy="252" r="38" fill="currentColor"/>
+  <path fill="currentColor" d="M196 432l108-120 64 70 70-84v134z"/>
+  <rect x="540" y="150" width="334" height="334" rx="40" fill="none" stroke="currentColor" stroke-width="48"/>
+  <rect x="150" y="540" width="334" height="334" rx="40" fill="none" stroke="currentColor" stroke-width="48"/>
+  <rect x="540" y="540" width="334" height="334" rx="40" fill="none" stroke="currentColor" stroke-width="48"/>
+</svg>

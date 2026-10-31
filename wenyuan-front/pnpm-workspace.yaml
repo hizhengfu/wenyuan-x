@@ -1,0 +1,15 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@vue-office/docx': true
+  '@vue-office/excel': true
+  '@vue-office/pdf': true
+  '@vue-office/pptx': true
+  bufferutil: true
+  core-js: true
+  cpu-features: true
+  es5-ext: true
+  esbuild: true
+  protobufjs: true
+  ssh2: true
+  utf-8-validate: true
+  vue-demi: true

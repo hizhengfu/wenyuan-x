@@ -1,0 +1,825 @@
+<krpano idletime="0.2">
+
+ <plugin name="orientation" 
+        url="%SWFPATH%/plugins/orientation.js" 
+        keep="true"
+        devices="HTML5"
+        onorientationchange="delayedcall(0.2,adapt_text_size_scroll());"
+        />
+
+<textbox_settings pic_ratio="36%"
+	              pic_align="lefttop"
+	              pic_resize_min="1"
+	              pic_resize_max="1"
+
+	              linecolor="0xFFFFFF"
+	              linealpha="0.9"
+
+	              bgcolor="0x000000" 
+	              bgalpha="0.8"
+	              bgborder="0 0xFFFFFF 0.5"
+	              bgroundedge="0"
+	              bgshadow="0 10 0.5 0xFFFFFF 0"   
+	              bgwidth="100%"
+	              bgheight="100%"   
+
+	              closebutton_color="false"
+                  enlarge_button="true"
+	              next_and_prev_button="true"
+	              next_and_prev_button_color="false"
+
+	              title_normal="text-align:center; color:#FFFFFF; font-family:LiSu; font-weight:bold; font-size:28px;"
+	              title_mobile="text-align:center; color:#FFFFFF; font-family:LiSu; font-weight:bold; font-size:30px;"
+				  
+	              text_normal="color:#FFFFFF; font-family:LiSu; font-size:28px;line-height:43px;letter-spacing:4px; leading:15px;text-indent: 2em;"
+	              text_mobile="color:#FFFFFF; font-family:LiSu; font-size:24px;line-height:43px;letter-spacing:5px;text-indent: 2em;"
+                 />
+				 
+<action name="open_tuwen"> 
+	if(layer[pic].url !== null,
+		set(layer[pic].url,null);
+		);
+    set(textbox_settings.pic_ratio,35%);
+	
+	switch(layer[textbox_container].visible);
+    tween(layer[textbox_container].alpha,1,0.5);
+     
+    set(layer[pic_title].html,get(imginfo[%1].title));        
+    set(layer[textbox_text].html,get(imginfo[%1].text));	
+	set(layer[pic].url,get(imginfo[%1].pic));
+    set(layer[pic_enlarge].title,get(imginfo[%1].name));
+	set(layer[pic_enlarge].title1,get(imginfo[%1].name));
+		
+	if(imginfo[%1].musicon == true,
+		set(layer[textbox_soundbutton].visible,true);
+        set(music,get(imginfo[%1].music));
+        playsound(music, 'get(music)', 1);
+    );
+	
+	if(imginfo[%1].linkon == true,
+		set(layer[textbox_linkbutton].visible,true);
+		set(BuyUrl,get(imginfo[%1].link));
+		set(layer[textbox_linkbutton].onclick,BuyUrl_link(););
+    );
+
+    copy(copy_mousefovchange, control.mousefovchange);
+	copy(copy_touchzoom, control.touchzoom);
+	set(control.mousefovchange, 0);
+	set(control.touchzoom, false); 
+    adapt_text_size_scroll();
+	
+	layer[textscroller].setcenter(0,0);
+</action>
+	
+<action name="open_wenzi"> 
+    set(textbox_settings.pic_ratio,99%);
+	
+	switch(layer[textbox_container].visible);
+    tween(layer[textbox_container].alpha,1,0.5);
+     
+    set(layer[pic_title].html,get(imginfo[%1].title));        
+    set(layer[textbox_text].html,get(imginfo[%1].text));
+	
+    set(layer[pic_enlarge].title,get(imginfo[%1].name));
+	set(layer[pic_enlarge].title1,get(imginfo[%1].name));
+		
+	if(imginfo[%1].musicon == true,
+		set(layer[textbox_soundbutton].visible,true);
+        set(music,get(imginfo[%1].music));
+        playsound(music, 'get(music)', 1);
+    );
+	
+	if(imginfo[%1].linkon == true,
+		set(layer[textbox_linkbutton].visible,true);
+		set(BuyUrl,get(imginfo[%1].link));
+		set(layer[textbox_linkbutton].onclick,BuyUrl_link(););
+    );
+
+    copy(copy_mousefovchange, control.mousefovchange);
+	copy(copy_touchzoom, control.touchzoom);
+	set(control.mousefovchange, 0);
+	set(control.touchzoom, false); 
+    adapt_text_size_scroll();
+	
+	layer[textscroller].setcenter(0,0);
+</action>
+	
+<action name="open_tupian"> 
+	if(layer[pic].url !== null,
+		set(layer[pic].url,null);
+		);
+    set(textbox_settings.pic_ratio,1%);
+	
+	switch(layer[textbox_container].visible);
+    tween(layer[textbox_container].alpha,1,0.5);
+    	
+	set(layer[pic].url,get(imginfo[%1].pic));
+    set(layer[pic_enlarge].title,get(imginfo[%1].name));
+	set(layer[pic_enlarge].title1,get(imginfo[%1].name));
+		
+	if(imginfo[%1].musicon == true,
+		set(layer[textbox_soundbutton].visible,true);
+        set(music,get(imginfo[%1].music));
+        playsound(music, 'get(music)', 1);
+    );
+	
+	if(imginfo[%1].linkon == true,
+		set(layer[textbox_linkbutton].visible,true);
+		set(BuyUrl,get(imginfo[%1].link));
+		set(layer[textbox_linkbutton].onclick,BuyUrl_link(););
+    );
+
+    copy(copy_mousefovchange, control.mousefovchange);
+	copy(copy_touchzoom, control.touchzoom);
+	set(control.mousefovchange, 0);
+	set(control.touchzoom, false); 
+    adapt_text_size_scroll();
+</action>
+	
+<action name="BuyUrl_link">
+    openurl(get(BuyUrl), _blank);
+</action>
+	
+<events  name="text_events" keep="true"			
+		 onresize="
+			delayedcall(0.05,adapt_text_size_scroll();
+			    layer[pic_mask].updatepos();
+			    delayedcall(0.1,picture_resize(pic);image_scale(););
+			    set(layer[pic_enlarge].state,s);
+			   set(layer[textbox_closebutton].visible,true);
+			);"
+		 onidle="set(layer[pic_scrollarea].draggable, true);" />
+
+<textbox_settings bgalign="center"
+                  bgedge="" />
+
+				  
+<action name="picture_resize">
+		div(aspect, layer[%1].imagewidth, layer[%1].imageheight);
+		mul(new_width, layer[pic_mask].pixelwidth, textbox_settings.pic_resize_min);
+		if(new_width GT layer[%1].imagewidth,mul(new_width,layer[%1].imagewidth,0.95););
+		div(new_height, new_width, aspect);
+		mul(max_height, layer[pic_mask].pixelheight, textbox_settings.pic_resize_min);
+		if(max_height GT layer[%1].imageheight,mul(max_height,layer[%1].imageheight););
+		if(new_height GT max_height,
+			copy(new_height, max_height);
+			mul(new_width, new_height, aspect);
+		  );
+		roundval(new_width);
+		roundval(new_height);
+		copy(layer[%1].width, new_width);
+		copy(layer[%1].height, new_height);
+        layer[%1].updatepos();
+		copy(layer[pic_scrollarea].width,pixelwidth);
+		copy(layer[pic_scrollarea].height,pixelheight);
+
+</action>
+	
+<action name="close_textbox">        tween(layer[textbox_container].alpha,0,0.5,null,
+	 set(layer[textbox_container].visible,false);
+	 set(layer[pic].scale,1);
+     layer[pic].updatepos();
+     copy(layer[pic_scrollarea].width,layer[pic].pixelwidth);
+     copy(layer[pic_scrollarea].height,layer[pic].pixelheight);
+     callwith(layer[pic_mask],onloaded);
+     set(layer[textbox_soundbutton].crop,400|0|100|100);
+     stopsound(music);
+	 set(layer[textbox_soundbutton].visible,false);
+	 set(layer[textbox_linkbutton].visible,false);
+     set(textbox_settings.skintextbox,'');
+	);
+</action>
+	                                                      
+<action name="image_onmousewheel">
+ if(iszoom,
+	 if(wheeldelta_touchscale GT 0,
+			if(startzoom,
+			   set(startzoom,false);
+			   copy(start_wheeldelta_touchscale, wheeldelta_touchscale);
+			   copy(start_imagescale, layer[pic].scale);
+			); 
+			div(tmp, wheeldelta_touchscale, start_wheeldelta_touchscale);
+			mul(layer[pic].scale, start_imagescale, tmp);
+			if(layer[pic].scale GT bigscale,
+			   set(layer[pic].scale,get(bigscale))
+			);
+			if(layer[pic].scale LT 1,
+			   set(layer[pic].scale,1)
+			);
+			layer[pic].updatepos();
+		    copy(layer[pic_scrollarea].width,layer[pic].pixelwidth);
+		    copy(layer[pic_scrollarea].height,layer[pic].pixelheight);
+		    layer[pic_scrollarea].updatepos();
+			set(layer[pic_scrollarea].draggable, false);
+		 ,
+			set(layer[pic_scrollarea].draggable, true);
+			mul(sit,get(wheeldelta),0.02);
+			mul(sit,layer[pic].scale);
+			add(layer[pic].scale,sit);
+			if(layer[pic].scale GT
+			   bigscale,set(layer[pic].scale,get(bigscale))
+			);
+			if(layer[pic].scale LT 1,
+			   set(layer[pic].scale,1)
+			);
+			layer[pic].updatepos();
+			copy(layer[pic_scrollarea].width,layer[pic].pixelwidth);
+			copy(layer[pic_scrollarea].height,layer[pic].pixelheight);
+			layer[pic_scrollarea].updatepos();
+			if(textbox_settings.zoomtocursor,
+			   screentolayer(pic, mouse.stagex,mouse.stagey, lx,ly);
+			   delayedcall(0.3,layer[pic_scrollarea].scrolltocenter(get(lx),get(ly)));
+			);
+		);
+	);
+</action>
+
+<action name="image_scale">
+ if(wheeldelta_touchscale GT 0,
+			if(startzoom,
+			set(startzoom,false);
+			copy(start_wheeldelta_touchscale, wheeldelta_touchscale);
+			copy(start_imagescale, layer[pic].scale);
+				); 
+			div(tmp, wheeldelta_touchscale, start_wheeldelta_touchscale);
+			mul(layer[pic].scale, start_imagescale, tmp);
+			if(layer[pic].scale GT bigscale,set(layer[pic].scale,get(bigscale)));
+			if(layer[pic].scale LT 1,set(layer[pic].scale,1));
+			layer[pic].updatepos();
+		    copy(layer[pic_scrollarea].width,layer[pic].pixelwidth);
+		    copy(layer[pic_scrollarea].height,layer[pic].pixelheight);
+		    layer[pic_scrollarea].updatepos();set(layer[pic_scrollarea].draggable, false);			
+			,                      
+			set(layer[pic_scrollarea].draggable, true);
+			mul(sit,get(wheeldelta),0.02);
+			mul(sit,layer[pic].scale);
+			add(layer[pic].scale,sit);
+			if(layer[pic].scale GT bigscale,set(layer[pic].scale,get(bigscale)));
+			if(layer[pic].scale LT 1,set(layer[pic].scale,1));
+			layer[pic].updatepos();
+			copy(layer[pic_scrollarea].width,layer[pic].pixelwidth);
+			copy(layer[pic_scrollarea].height,layer[pic].pixelheight);
+			layer[pic_scrollarea].updatepos();
+			screentolayer(pic, mouse.stagex,mouse.stagey, lx,ly);
+			delayedcall(0.3,layer[pic_scrollarea].scrolltocenter(get(lx),get(ly)));
+	);	
+</action>
+
+<action name="adapt_text_size_scroll">		
+if(stagewidth GE stageheight,
+   copy(layer[textscroller].height, layer[textbox_text].height);	
+   mul(yu,layer[textbox_container].pixelheight,0.2);
+   add(yu,40);				
+   sub(new_text_size_scroller,layer[textbox_container].pixelheight,yu);
+   copy(plugin[textbox_container_text].height,new_text_size_scroller);		
+   sub(new_scrollbar_size,new_text_size_scroller,10);
+   copy(plugin[scrollbar].height,new_scrollbar_size);
+   set(max_slider_y,get(layer[textbox_container_text].pixelheight));
+   sub(max_slider_y,get(layer[scrollslider].pixelheight));
+   sub(max_slider_y,10);
+   
+   delayedcall(0.2,
+    sub(scroll_area,layer[textscroller].pixelheight,layer[textbox_container_text].pixelheight);	 
+	add(scroll_area,10);	 			
+	div(slider_koeficient,scroll_area,max_slider_y);				
+	if(layer[textscroller].pixelheight GT  layer[textbox_container_text].pixelheight,
+	 set(layer[scrollbar].visible,true); 
+	 ,
+	 set(layer[scrollbar].visible,false); 
+	 );
+		);
+	if(%1 !== null AND %1 == 2,set(r4,1),resize_ratio());
+  ,
+    copy(layer[textscroller].height,layer[textbox_text].height);			sub(new_scrollbar_size,layer[textbox_container_text].pixelheight,10);
+	copy(plugin[scrollbar].height,new_scrollbar_size);
+	set(max_slider_y,get(layer[textbox_container_text].pixelheight));
+	sub(max_slider_y,get(layer[scrollslider].pixelheight));
+	sub(max_slider_y,10); 
+		
+	delayedcall(0.2,
+		sub(scroll_area,layer[textscroller].pixelheight,layer[textbox_container_text].pixelheight);	 add(scroll_area,10);	 			
+			div(slider_koeficient,scroll_area,max_slider_y);				
+			if(layer[textscroller].pixelheight GT layer[textbox_container_text].pixelheight,
+				set(layer[scrollbar].visible,true); 
+				,
+				set(layer[scrollbar].visible,false); 
+			);
+	); div(check_th,layer[textbox_text].pixelheight,layer[textbox_container_text].pixelheight);
+	if(check_th LT 1,
+        div(th_t,layer[textbox_text].pixelheight,layer[textbox_container].pixelheight);
+		if(check_zzz === null,
+			div(th_m,layer[textbox_container_text].pixelheight,layer[textbox_container].pixelheight);
+			copy(check_zzz,layer[textbox_container_text].pixelheight);
+			,
+            div(th_m,check_zzz,layer[textbox_container].pixelheight);
+			);
+			mul(th_t,100);
+			mul(th_m,100);
+			sub(th_s,th_m,th_t);
+			indexoftxt(th_ratioindex, get(textbox_settings.pic_ratio),'%');
+    	    subtxt(th_ratio, get(textbox_settings.pic_ratio), 0, get(th_ratioindex));
+			sub(th_s,th_ratio,th_s);
+			roundval(th_s);
+			if(th_s LT 15,set(th_s,15));
+			txtadd(th_s_now,get(th_s),'%');
+			if(%1 !== null AND %1 == 2,set(r4,1),resize_ratio(get(th_s_now));adapt_text_size_scroll_z(true));
+			,
+			if(%1 !== null AND %1 == 2,set(r4,1),resize_ratio(get(textbox_settings.pic_ratio));adapt_text_size_scroll_z());
+			);
+		);
+</action>
+
+<action name="adapt_text_size_scroll_z">
+layer[scrollbar].updatepos();
+layer[textbox_container_text].updatepos();
+layer[scrollslider].updatepos();
+sub(new_scrollbar_size,plugin[textbox_container_text].pixelheight,10);
+copy(plugin[scrollbar].height,new_scrollbar_size);
+set(max_slider_y,get(layer[textbox_container_text].pixelheight));
+sub(max_slider_y,get(layer[scrollslider].pixelheight));
+sub(max_slider_y,10);                                    
+
+delayedcall(0.2,
+    sub(scroll_area,layer[textscroller].pixelheight,layer[textbox_container_text].pixelheight);	 
+    add(scroll_area,10);	 			
+	div(slider_koeficient,scroll_area,max_slider_y);				
+	if(layer[textscroller].pixelheight GT layer[textbox_container_text].pixelheight,
+		if(%1,
+		   set(layer[scrollbar].visible,false)
+		   ,
+		   set(layer[scrollbar].visible,true); 
+		);
+	,
+		set(layer[scrollbar].visible,false);
+	);
+);	
+</action>
+
+
+
+<action name="update_scroll_menu">		
+layer[textscroller].stopscrolling(); 
+sub(scroll_area,layer[textscroller].pixelheight,layer[textbox_container_text].pixelheight);	 
+add(scroll_area,10);	 
+div(slider_koeficient,scroll_area,max_slider_y);	
+mul(new_scrollareay_y,slider_koeficient,layer[scrollslider].y);			
+mul(layer[textscroller].y,new_scrollareay_y,-1);
+</action>
+
+<action name="tween_text_on_top">			
+layer[textscroller].stopscrolling(); 
+layer[textscroller].scrolltocenter(0,0);
+</action>
+
+<action name="textbox_container_onloaded">			
+copy(bgroundedge,textbox_settings.bgroundedge);
+copy(bgshadow,textbox_settings.bgshadow);
+copy(bgcolor,textbox_settings.bgcolor);
+copy(bgalpha,textbox_settings.bgalpha);
+copy(bgborder,textbox_settings.bgborder);
+copy(width,textbox_settings.bgwidth);
+copy(height,textbox_settings.bgheight);
+copy(align,textbox_settings.bgalign);
+copy(edge,textbox_settings.bgedge);
+</action>
+
+
+<action name="textbox_container_text_onloaded">
+  indexoftxt(ratioindex, get(textbox_settings.pic_ratio),'%');
+  subtxt(ratio, get(textbox_settings.pic_ratio), 0, get(ratioindex));
+  if(stagewidth GE stageheight,
+	 copy(align,textbox_settings.pic_align);
+	 set(x,5%);
+	 set(y,20%);
+	 set(height,75%);
+     if(ratio LT 15,
+		 set(visible,false);
+		 set(layer[sp_line].visible,false)
+		);
+     if(ratio GT 85,
+		 set(visible,true);
+		 set(layer[sp_line].visible,false);
+		 set(width,90%);
+		);
+	 if(ratio GE 15 AND ratio LE 85,
+		 sub(ratio_t,ratio,5);
+		 txtadd(text_ratio,get(ratio_t),'%');
+		 copy(width,text_ratio);
+		 set(layer[sp_line].visible,true);
+		 set(visible,true);
+		);
+    ,
+	 set(align,top);
+	 set(x,10); 
+	 mul(ratio_bg_0,stagewidth,ratio_bg);
+	 sub(width,ratio_bg_0,10);
+	 if(ratio LT 15,
+		 set(visible,false);
+		 set(layer[sp_line].visible,false)
+		);
+	 if(ratio GT 85,
+		 set(visible,true);
+		 set(layer[sp_line].visible,false); 				    
+		 set(y,10%);
+		 set(height,96%);
+		);
+	 if(ratio GE 15 AND ratio LE 85,			 	    
+		 sub(ratio_0,102,get(ratio)); 
+		 sub(ratio_t,ratio,5);
+		 txtadd(text_ratio_0,get(ratio_0),'%');
+		 txtadd(text_ratio,get(ratio_t),'%');
+		 copy(y,text_ratio_0); 
+		 copy(height,text_ratio);
+		 set(visible,true);
+		 set(layer[sp_line].visible,true)
+		);
+    );
+</action>
+
+<action name="pic_ratio_action">
+  indexoftxt(ratioindex, get(textbox_settings.pic_ratio),'%');
+  subtxt(pic_ratio, get(textbox_settings.pic_ratio), 0, get(ratioindex));
+  if(stagewidth GE stageheight,
+     copy(align,textbox_settings.pic_align);
+     set(y,2%);
+     set(height,96%);
+     if(pic_ratio LT 15,
+	     set(visible,true);
+		 set(width,90%);
+		 set(x,5%);
+		 set(layer[sp_line].visible,false);
+		);
+	 if(pic_ratio GT 85,
+	     set(visible,false);
+		 set(layer[sp_line].visible,false);
+		); 
+	 if(pic_ratio GE 15 AND pic_ratio LE 85,
+	   	    add(pic_textbox_container_x,pic_ratio,2);
+	        sub(pic_ratio,93,get(pic_ratio)); 
+	        txtadd(pic_ratio,get(pic_ratio),'%');
+	        txtadd(x_ratio,get(pic_textbox_container_x),'%');
+	        copy(width,pic_ratio);copy(x,x_ratio);set(visible,true);
+	        set(layer[textbox_container_text].visible,true);
+	        set(layer[sp_line].visible,true);
+	       );
+
+	,
+     set(align,top);
+     set(y,1%);
+     set(x,0);
+     mul(ratio_bg_0,stagewidth,ratio_bg);
+     sub(width,ratio_bg_0,20);
+     if(pic_ratio LT 15,
+         set(height,98%);
+		 set(visible,true);
+		 set(layer[sp_line].visible,false)
+		);
+     if(pic_ratio GT 85,
+         set(visible,false);
+		 set(layer[sp_line].visible,false)
+		);
+     if(pic_ratio GE 15 AND pic_ratio LE 85,
+         sub(pic_ratio,98,get(pic_ratio)); 
+	     txtadd(pic_ratio,get(pic_ratio),'%');
+         copy(height,pic_ratio);
+         set(layer[sp_line].visible,true);
+		 set(visible,true);
+         set(layer[textbox_container_text].visible,true);
+        );
+	);
+</action>
+
+<action name="pic_ratio_enlarge">
+  if(stagewidth GE stageheight,
+     copy(layer[pic_mask].align,textbox_settings.pic_align);
+     set(layer[pic_mask].y,0%);
+     set(layer[pic_mask].height,100%);
+     set(layer[textbox_container_text].visible,false);
+     set(layer[pic_mask].width,100%);
+	 set(layer[pic_mask].x,0%);
+	 set(layer[sp_line].visible,false);
+	 ,
+     set(layer[pic_mask].align,top);
+     set(layer[textbox_container_text].visible,false);
+     set(layer[pic_mask].y,0%);
+     set(layer[pic_mask].x,0%);
+     set(layer[pic_mask].width,100%);
+     set(layer[pic_mask].height,100%);
+	 set(layer[pic_mask].visible,true);
+	 set(layer[sp_line].visible,false);
+	);
+</action>
+
+<action name="sp_line_onloaded">
+indexoftxt(ratioindex, get(textbox_settings.pic_ratio),'%');
+subtxt(sp_line_ratio_0, get(textbox_settings.pic_ratio), 0, get(ratioindex));
+
+sub(sp_line_ratio_1,100,get(sp_line_ratio_0)); 
+txtadd(sp_line_ratio_2,get(sp_line_ratio_1),'%');
+copy(bgcolor,textbox_settings.linecolor);
+copy(bgalpha,textbox_settings.linealpha);
+
+  if(stagewidth GE stageheight,
+	 copy(align,textbox_settings.pic_align);
+	 copy(x,textbox_settings.pic_ratio);
+	 set(y,5%);
+	 set(height,90%);
+	 set(width,1);
+	,
+	 copy(align,top);
+	 set(x,5%);
+	 copy(y,sp_line_ratio_2);
+	 set(width,90%);
+	 set(height,1);
+	);
+</action>
+
+
+<action name="resize_ratio">
+ indexoftxt(ratiobg, get(textbox_settings.bgwidth),'%');
+ subtxt(ratio_bg, get(textbox_settings.bgwidth), 0, get(ratiobg));
+ div(ratio_bg,100);
+ 
+ indexoftxt(ratioindex, get(textbox_settings.pic_ratio),'%');
+ subtxt(ratio, get(textbox_settings.pic_ratio), 0, get(ratioindex));
+ sub(sp_line_ratio_1,100,get(ratio));
+ 
+ txtadd(sp_line_ratio_2,get(sp_line_ratio_1),'%');
+ copy(layer[sp_line].bgcolor,textbox_settings.linecolor);
+ copy(layer[sp_line].bgalpha,textbox_settings.linealpha);
+ 
+  if(stagewidth GE stageheight,
+     copy(layer[sp_line].align,textbox_settings.pic_align);
+	 copy(layer[sp_line].x,textbox_settings.pic_ratio);
+	 set(layer[sp_line].y,5%);
+	 set(layer[sp_line].height,90%);
+	 set(layer[sp_line].width,1);
+	 set(layer[separation_line].visible,true);
+	 set(layer[textbox_closebutton].x,100);
+	 set(layer[textbox_closebutton].y,5%);
+	 if(textbox_settings.pic_align == righttop,
+	 set(layer[textbox_closebutton].ox,100),
+	 set(layer[textbox_closebutton].ox,-100));
+		 	copy(layer[textbox_closebutton].align,textbox_settings.pic_align);
+		 	set(layer[textbox_closebutton].oy,-25);
+
+		 	set(layer[textbox_soundbutton].x,80);
+		 	set(layer[textbox_soundbutton].y,5%);
+		 	if(textbox_settings.pic_align == righttop,
+		 		set(layer[textbox_soundbutton].ox,0),
+		 		set(layer[textbox_soundbutton].ox,0));
+		 	copy(layer[textbox_soundbutton].align,textbox_settings.pic_align);
+		 	set(layer[textbox_soundbutton].oy,-25);
+
+		 	set(layer[textbox_linkbutton].x,150);
+		 	set(layer[textbox_linkbutton].y,5%);
+		 	if(textbox_settings.pic_align == righttop,
+		 		set(layer[textbox_linkbutton].ox,0),
+		 		set(layer[textbox_linkbutton].ox,0)
+				);
+		 	copy(layer[textbox_linkbutton].align,textbox_settings.pic_align);
+		 	set(layer[textbox_linkbutton].oy,-25);
+			copy(layer[textbox_container_text].align,textbox_settings.pic_align);
+	    	set(layer[textbox_container_text].x,5%);
+	    	set(layer[textbox_container_text].y,20%);
+	    	set(layer[textbox_container_text].height,75%);
+	    	copy(layer[pic_mask].align,textbox_settings.pic_align);
+         	set(layer[pic_mask].y,2%);
+         	set(layer[pic_mask].height,96%);
+            if(ratio LT 15,
+			    set(layer[textbox_container_text].visible,false);
+			    set(layer[pic_mask].visible,true);
+			    set(layer[pic_mask].width,90%);
+			    set(layer[pic_mask].x,5%);
+			    set(layer[sp_line].visible,false);
+				
+			    );
+            if(ratio GT 85,
+			    set(layer[textbox_container_text].visible,true);
+			    set(layer[pic_mask].visible,false);
+			    set(layer[sp_line].visible,false);
+			    set(layer[textbox_container_text].width,90%);
+				if(device.mobile == false,
+                    set(layer[pic_title].y,-30);
+                    ,
+                    set(layer[pic_title].y,-35);
+                   );
+			    );
+	        if(ratio GE 15 AND ratio LE 85,
+			    sub(ratio_t,ratio,5);
+			    txtadd(text_ratio,get(ratio_t),'%');
+			    copy(layer[textbox_container_text].width,text_ratio);
+			    set(layer[sp_line].visible,true);
+			    set(layer[textbox_container_text].visible,true);
+			    add(pic_textbox_container_x,ratio,2);
+	            sub(pic_ratio_0,93,get(ratio)); 
+	            txtadd(pic_ratio_1,get(pic_ratio_0),'%');
+	            txtadd(x_ratio,get(pic_textbox_container_x),'%');
+	            copy(layer[pic_mask].width,pic_ratio_1);
+	            copy(layer[pic_mask].x,x_ratio);
+	            set(layer[pic_mask].visible,true);
+				if(device.mobile == false,
+                    set(layer[pic_title].y,-35);
+                    ,
+                    set(layer[pic_title].y,-35);
+                   );
+			    );
+            ,
+			
+			copy(layer[sp_line].align,top);
+		 	set(layer[sp_line].x,5%);
+		 	copy(layer[sp_line].y,sp_line_ratio_2);
+		 	set(layer[sp_line].width,90%);
+		 	set(layer[sp_line].height,1);
+            set(layer[sp_line].visible,false);
+			
+		 	set(layer[separation_line].visible,false);
+
+		 	set(layer[textbox_closebutton].align,righttop);
+		 	set(layer[textbox_closebutton].x,0%);
+		 	set(layer[textbox_closebutton].y,0%);
+		 	set(layer[textbox_closebutton].ox,20);
+		 	set(layer[textbox_closebutton].oy,-20);
+
+		 	set(layer[textbox_soundbutton].align,lefttop);
+		 	set(layer[textbox_soundbutton].x,10);
+		 	set(layer[textbox_soundbutton].y,5);
+		 	set(layer[textbox_soundbutton].ox,-18);
+		 	set(layer[textbox_soundbutton].oy,-18);
+
+		 	set(layer[textbox_linkbutton].align,lefttop);
+		 	set(layer[textbox_linkbutton].x,80);
+		 	set(layer[textbox_linkbutton].y,5);
+		 	set(layer[textbox_linkbutton].ox,-18);
+		 	set(layer[textbox_linkbutton].oy,-18);
+		 	
+
+	 	    set(layer[textbox_container_text].align,top);
+			set(layer[textbox_container_text].x,10); 
+			mul(ratio_bg_0,stagewidth,ratio_bg);
+			sub(layer[textbox_container_text].width,ratio_bg_0,10);
+			set(layer[pic_mask].align,top);
+         	set(layer[pic_mask].y,1%);
+         	set(layer[pic_mask].x,0);
+         	sub(layer[pic_mask].width,ratio_bg_0,20);
+			if(ratio LT 15,
+			    set(layer[textbox_container_text].visible,false);
+			    set(layer[pic_mask].height,98%);
+			    set(layer[pic_mask].visible,true);
+			    set(layer[sp_line].visible,false); 
+			    );
+			if(ratio GT 85,
+			    set(layer[textbox_container_text].visible,true);
+			    set(layer[sp_line].visible,false); 				    
+			    set(layer[textbox_container_text].y,10%);
+			    set(layer[textbox_container_text].height,96%);
+			    set(layer[pic_mask].visible,false);
+				set(layer[pic_title].y,-20);
+		        );
+			 if(ratio GE 15 AND ratio LE 85,			 	    
+		 	    sub(ratio_0,102,get(ratio)); 
+		 	    sub(ratio_t,ratio,5);
+			    txtadd(text_ratio_0,get(ratio_0),'%');
+			    txtadd(text_ratio,get(ratio_t),'%');
+		        copy(layer[textbox_container_text].y,text_ratio_0); 
+		        copy(layer[textbox_container_text].height,text_ratio);
+		        set(layer[textbox_container_text].visible,true);
+		        set(layer[sp_line].visible,true);
+		        sub(pic_ratio_2,98,get(ratio)); 
+	            txtadd(pic_ratio_3,get(pic_ratio_2),'%');
+         	    copy(layer[pic_mask].height,pic_ratio_3);
+         	    set(layer[pic_mask].visible,true);
+				set(layer[pic_title].y,-70);
+		        );
+
+			 );
+</action>
+
+	<events name="newevents" keep="true" onnewpano="close_textbox();"/>
+                                               
+	<events name="image_zoom_events" onmousewheel="image_onmousewheel();" keep="true" />
+	
+	
+	<layer name="textbox_container" keep="true" type="container" align="" x="0" y="0" zorder="4" alpha="0" width="" visible="false" height="" handcursor="false" bgcapture="true" onloaded="textbox_container_onloaded();" maskchildren="true"  >
+
+       <!-- 中间分割线 -->
+	    <layer name="sp_line" type="container" onloaded="sp_line_onloaded();" zorder="10" />
+      <!-- 关闭按钮分割线 -->
+		<layer name="separation_line" zorder="10" type="container" align="" x="100" y="5%" ox="-10" oy="10" width="1" height="30" 
+		bgcolor="" bgalpha="" onloaded="copy(align,textbox_settings.pic_align);copy(bgcolor,textbox_settings.linecolor);copy(bgalpha,textbox_settings.linealpha);if(stagewidth GE stageheight,set(visible,true);,set(visible,false))" />
+
+
+		 <layer name="textbox_closebutton" zorder="10" align="" 
+		        url="gallerybtns.png" 
+		 crop="200|0|100|100" 
+		 onovercrop="200|100|100|100"
+	     ondowncrop="200|100|100|100"  scale="1.0" 
+		 onclick="close_textbox();
+		          copy(control.mousefovchange, copy_mousefovchange);
+	              copy(control.touchzoom, copy_touchzoom);" />
+
+
+		<layer name="textbox_soundbutton" zorder="10" align="lefttop" url="gallerybtns.png" oy="-25"
+		 crop="400|0|100|100" onovercrop="400|100|100|100"
+	     ondowncrop="400|100|100|100"
+	     scale="1" onclick="switch(crop,'400|0|100|100','400|100|100|100');pausesoundtoggle(music);"  y="3%" x="100" />	 
+
+
+		<layer name="textbox_linkbutton" zorder="10" align="lefttop" url="gallerybtns.png" oy="-25"
+		 crop="600|0|100|100" onovercrop="600|100|100|100"
+	     ondowncrop="600|100|100|100" 
+	     scale="1" y="5%" x="100"
+	      onloaded=
+	      "copy(align,textbox_settings.pic_align);
+	      if(stagewidth GE stageheight,set(x,200);set(y,5%);
+	      	if(textbox_settings.pic_align == righttop,set(ox,0),set(ox,0));set(oy,-25);,
+	      	set(align,lefttop);set(x,110);set(y,5);set(ox,-18);set(oy,-18););"
+			       />
+				   
+		<!-- 图片 -->
+        <layer name="pic_mask" type="container" zorder="5" bgcapture=""  bgalpha="0"  onloaded="pic_ratio_action();" maskchildren="true">
+
+
+             <layer name="pic_enlarge" url="gallerybtns.png" align="rightbottom" x="-10" y="-15" zorder="15"  crop="300|0|100|100" 
+		 onovercrop="300|100|100|100"
+	     ondowncrop="300|100|100|100"  scale="1" 
+		 state="s" title="" title1="" 
+		 onloaded="copy(visible,textbox_settings.enlarge_button)"
+	     onclick="
+		 if(layer[pic_enlarge].state == s,
+		    copy(pic_mask_height,layer[pic_mask].height);
+		    pic_ratio_enlarge();
+            set(layer[separation_line].visible,false);
+            set(layer[textbox_soundbutton].visible,false);
+            set(layer[textbox_linkbutton].visible,false);		    
+		    set(layer[pic_enlarge].state,b);
+			set(layer[textbox_closebutton].visible,false);
+		    ,
+		    callwith(layer[pic_mask],onloaded);
+		    delayedcall(0,copy(layer[pic_mask].height,pic_mask_height));
+		    set(layer[pic_enlarge].state,s);
+		    set(layer[textbox_closebutton].visible,true);			
+            if(imginfo[get(title)].musicon == true,
+			   set(layer[textbox_soundbutton].visible,true););
+			if(imginfo[get(title1)].linkon == true,
+			   set(layer[textbox_linkbutton].visible,true););
+            if(device.mobile == false,
+			   if(stagewidth GE stageheight,set(layer[separation_line].visible,true));
+			   ,
+			   if(stagewidth GE stageheight,set(layer[separation_line].visible,false)););
+			   
+			);"
+			/>
+
+
+            <layer name="pic_loading_text" url="%SWFPATH%/plugins/textfield.swf" align="center" x="0" y="0" width="100%" autoheight="true" background="false" border="false" onautosized="" textshadow="1"
+				       padding="10 15"
+				       html="图片加载中…"
+				       css="color:#FFFFFF; font-family:Arial; font-size:28px; text-align:center;"
+			/>
+
+
+	        <layer name="pic_scrollarea" url="%SWFPATH%/plugins/scrollarea.swf" alturl="%SWFPATH%/plugins/scrollarea.js" align="center" width="" height="" direction="all" mwheel="false">
+    
+
+	            <layer name="pic" url="" align="center" x="0" y="0"
+				       onloaded="picture_resize(get(name));div(bigscale,imagewidth,pixelwidth);mul(bigscale,textbox_settings.pic_resize_max);set(layer[pic_loading_text].visible,false);set(visible,true);" 
+					   onhover="" 
+					   state="small" 
+	                   onover="set(iszoom, true); set(startzoom, true); "
+					   onout="set(iszoom, false);"
+					   ondown.touch="onover();"
+					   onup.touch="onout();"/>
+	        </layer>
+
+        </layer>
+<!-- onloaded="textbox_container_text_onloaded();" -->
+	    <layer name="textbox_container_text" type="container"   bgalpha="0" maskchildren="false" bgcapture="true" scalechildren="true" zorder="6"
+	    onloaded="textbox_container_text_onloaded();" >
+
+	        <layer name="pic_title" url="%SWFPATH%/plugins/textfield.swf" children="false" enabled="false" align="lefttop" x="15" y="-8%" autowidth="true" height="150" oy="0" 
+		           border="false" background="false" visible=""
+			       css=""
+			       html=""
+			       onloaded="if(device.mobile,copy(css,textbox_settings.title_mobile),copy(css,textbox_settings.title_normal))"
+			       />                                  
+
+		  	<layer name="textmask" type="container" align="lefttop" x="5" y="5" bgalpha="0" width="-30" height="-10" maskchildren="true" onloaded="" >
+
+		  		<layer name="textscroller" url="%SWFPATH%/plugins/scrollarea.swf"  alturl="%SWFPATH%/plugins/scrollarea.js" mwheel="true" direction="v" overscroll="0" align="lefttop" width="100%" height="100%" onscroll="if(hoverflow GT 0, div(yp,toverflow,hoverflow);Math.min(yp,1);Math.max(yp,0); copy(th,layer[scrollbar].pixelheight);sub(th,layer[scrollslider].pixelheight); mul(yp,th); copy(layer[scrollslider].y,yp); );">
+
+		  		                                                  
+		     		<layer name="textbox_text" url="%SWFPATH%/plugins/textfield.swf" align="lefttop" x="0" y="0" width="100%" height="100%" background="true" backgroundcolor="0xff0000" backgroundalpha="0.0" border="false" padding="10 15" html="" 
+					css="" 
+					autoheight="true" onautosized="delayedcall(0.2,adapt_text_size_scroll());" onloaded="if(device.mobile,copy(css,textbox_settings.text_mobile),copy(css,textbox_settings.text_normal))"/>        
+		      </layer>
+
+		      <layer name="scrollbar" type="container" enabled="true" bgcolor="0x666666" visible="true" bgcapture="true"  bgalpha="1" align="right" x="0" y="0" width="5" height="100%" zorder="5"  >   
+
+			      <layer name="scrollslider" type="container" align="righttop"  zorder="15"  x="0" y="0" width="5" height="100" bgcolor="0xFFFFFF" bgalpha="1.0" bgcapture="true" dragging="if(pressed,sub(vdy, mouse.stagey, drag_stagey); add(newvy, drag_currenty, vdy);if(newvy LE 0, 	set(newvy,0);); if(newvy GE max_slider_y ,copy(newvy,max_slider_y););copy(y,newvy); update_scroll_menu();delayedcall(0,dragging()););" ondown="copy(drag_currenty,y); copy(drag_stagey,mouse.stagey); dragging();" />		
+		       </layer>
+		   	</layer>
+	    </layer>
+	</layer>
+	
+</krpano>

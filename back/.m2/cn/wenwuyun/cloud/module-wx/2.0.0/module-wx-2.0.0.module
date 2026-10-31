@@ -1,0 +1,291 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-wx",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-mp",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-open",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-miniapp",
+          "version": {
+            "requires": "4.6.9.B"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0.jar",
+          "url": "module-wx-2.0.0.jar",
+          "size": 111152,
+          "sha512": "b53461ab412a06183e2d533d1a6da903d2f5ba4a3ed22cd3aee4f651c7238fff284f15700cae5dae28f6b5b7ad22a6af5883def0fa43ef5b5b38ccd4a5743fc4",
+          "sha256": "fc9c301df0ce840d7128f15a378be27e058e59405db363276a1fb8a4e9d12d59",
+          "sha1": "a9db78e3f100e76c0566a23b5ab0de371c6757ae",
+          "md5": "4fcb92c5bf4e67bcfdb612220581ca3c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-mp",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-open",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.binarywang",
+          "module": "weixin-java-miniapp",
+          "version": {
+            "requires": "4.6.9.B"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0.jar",
+          "url": "module-wx-2.0.0.jar",
+          "size": 111152,
+          "sha512": "b53461ab412a06183e2d533d1a6da903d2f5ba4a3ed22cd3aee4f651c7238fff284f15700cae5dae28f6b5b7ad22a6af5883def0fa43ef5b5b38ccd4a5743fc4",
+          "sha256": "fc9c301df0ce840d7128f15a378be27e058e59405db363276a1fb8a4e9d12d59",
+          "sha1": "a9db78e3f100e76c0566a23b5ab0de371c6757ae",
+          "md5": "4fcb92c5bf4e67bcfdb612220581ca3c"
+        }
+      ]
+    },
+    {
+      "name": "testFixturesApiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-wx",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-test"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0-test-fixtures.jar",
+          "url": "module-wx-2.0.0-test-fixtures.jar",
+          "size": 9419,
+          "sha512": "5c4eb2967c9b404b2562184f530cb134354c64df462ad469edf1065eb780e6faf0b8452effed288939d23f0b33b1b5710951e61c74203b571ab244b33930d8fe",
+          "sha256": "a8ae6d273fdce172d7306a164817f645f67d468433d7c533f7a4370e8dd022c8",
+          "sha1": "89d415dd29318f771d05311d0847f12dde518830",
+          "md5": "a0dff6d3b16980cbaa891cb1084ed3cd"
+        }
+      ],
+      "capabilities": [
+        {
+          "group": "io.hizhengfu.cloud",
+          "name": "module-wx-test-fixtures",
+          "version": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "testFixturesRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "jakarta.servlet",
+          "module": "jakarta.servlet-api",
+          "version": {
+            "requires": "6.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-wx",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-test"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-wx-2.0.0-test-fixtures.jar",
+          "url": "module-wx-2.0.0-test-fixtures.jar",
+          "size": 9419,
+          "sha512": "5c4eb2967c9b404b2562184f530cb134354c64df462ad469edf1065eb780e6faf0b8452effed288939d23f0b33b1b5710951e61c74203b571ab244b33930d8fe",
+          "sha256": "a8ae6d273fdce172d7306a164817f645f67d468433d7c533f7a4370e8dd022c8",
+          "sha1": "89d415dd29318f771d05311d0847f12dde518830",
+          "md5": "a0dff6d3b16980cbaa891cb1084ed3cd"
+        }
+      ],
+      "capabilities": [
+        {
+          "group": "io.hizhengfu.cloud",
+          "name": "module-wx-test-fixtures",
+          "version": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

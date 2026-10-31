@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='zh-cmn'>
+<head>
+  <meta charset='UTF-8' />
+  <link rel='icon' href='./favicon.ico' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+  <title><%- title %></title>
+  <meta name='description' content='<%- description %>'>
+  <style>
+    html, body, #app {
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .app-loading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-button {
+      margin: 15px;
+      padding: 6px 12px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+<div id='app'>
+  <%
+    const hideInitialLoadingTitles = [
+      '江西数字文旅驾驶舱',
+      '云游江西-文博管理系统',
+      '云游江西-文博管理系统-H5',
+    ];
+    const hideInitialLoading = hideInitialLoadingTitles.includes(title) || hideInitialLoadingTitles.includes(abbrTitle);
+  %>
+  <% if (!hideInitialLoading) { %>
+  <div class='app-loading'>
+    <img src='./loading.svg' alt='loading'>
+    <i class='app-tips'>加载中，请稍候</i>
+    <button class='app-button' onclick='location.reload()' style='display: none;'>点击刷新</button>
+    <script type='text/javascript'>
+      setTimeout(function() {
+        var tips = document.querySelector('.app-tips');
+        if (tips) {
+          tips.innerHTML = '如长时间看到此界面，请点击下面刷新按钮尝试刷新';
+        }
+        var button = document.querySelector('.app-button');
+        if (button) {
+          button.style.display = 'block';
+        }
+      }, 3000);
+    </script>
+  </div>
+  <% } %>
+</div>
+</body>
+</html>

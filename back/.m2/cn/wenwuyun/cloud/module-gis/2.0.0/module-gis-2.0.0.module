@@ -1,0 +1,370 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-gis",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-main",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-referencing",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-render",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-shapefile",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-geojson",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-epsg-hsql",
+          "version": {
+            "requires": "33.1"
+          }
+        },
+        {
+          "group": "org.locationtech.jts",
+          "module": "jts-core",
+          "version": {
+            "requires": "1.20.0"
+          }
+        },
+        {
+          "group": "org.locationtech.jts",
+          "module": "jts-io",
+          "version": {
+            "requires": "1.20.0"
+          }
+        },
+        {
+          "group": "org.locationtech.jts.io",
+          "module": "jts-io-common",
+          "version": {
+            "requires": "1.20.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-gis-2.0.0.jar",
+          "url": "module-gis-2.0.0.jar",
+          "size": 63865,
+          "sha512": "5efe6c4ebd5ddff63843de3a765c2cb876c5c94bc41e88d889c284f2f20b8a08922b730d82c27221e730b527b946023a3eddd80a2c0ce75376f19f537840285b",
+          "sha256": "c5c4c0138bcd8c10e336443f2d726761b4bbd8312764d2bdcabd065542a3da37",
+          "sha1": "edbfa77c8ab2c47ec602aec6bebdb5a0ee1a0025",
+          "md5": "6340110b7dfd088aa458bd6425d61cc0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-main",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-referencing",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-render",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-shapefile",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-geojson",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.geotools",
+          "module": "gt-epsg-hsql",
+          "version": {
+            "requires": "33.1"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.locationtech.jts",
+          "module": "jts-core",
+          "version": {
+            "requires": "1.20.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.locationtech.jts",
+          "module": "jts-io",
+          "version": {
+            "requires": "1.20.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.locationtech.jts.io",
+          "module": "jts-io-common",
+          "version": {
+            "requires": "1.20.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-gis-2.0.0.jar",
+          "url": "module-gis-2.0.0.jar",
+          "size": 63865,
+          "sha512": "5efe6c4ebd5ddff63843de3a765c2cb876c5c94bc41e88d889c284f2f20b8a08922b730d82c27221e730b527b946023a3eddd80a2c0ce75376f19f537840285b",
+          "sha256": "c5c4c0138bcd8c10e336443f2d726761b4bbd8312764d2bdcabd065542a3da37",
+          "sha1": "edbfa77c8ab2c47ec602aec6bebdb5a0ee1a0025",
+          "md5": "6340110b7dfd088aa458bd6425d61cc0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{PAGE_TITLE}}</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-default-type="{{PAGE_TYPE}}" data-lock-type="true">
+    <main class="home-shell">
+      <section class="kg-home">
+        <header class="home-head">
+          <div class="title-block">
+            <span class="title-mark"></span>
+            <div>
+              <h1>{{PAGE_TITLE}}</h1>
+              <p>{{PAGE_SUBTITLE}}</p>
+            </div>
+          </div>
+          <div class="head-actions">
+            <button class="ghost-btn" id="advancedFilterBtn" type="button">高级筛选</button>
+            <button class="primary-btn" id="resetBtn" type="button">重置</button>
+          </div>
+        </header>
+
+        <section class="query-strip">
+          <label class="searchbox-main">
+            <span>检索</span>
+            <input id="keywordInput" type="search" placeholder="输入名称、地域、年代、类别；简介:关键词" />
+          </label>
+          <div class="active-path" id="activePath"></div>
+        </section>
+
+        <section class="metric-strip" id="metricStrip"></section>
+
+        <section class="graph-layout">
+          <section class="graph-stage">
+            <div class="stage-head">
+              <div>
+                <h2 id="graphTitle">{{PAGE_TYPE}}知识图谱主视图</h2>
+                <p id="graphSubtitle">以现状评估为主视角，点击图谱内的主视角节点可切换观察角度。</p>
+              </div>
+              <div class="stage-hint">
+                <span>1 点击主视角</span>
+                <span>2 点击聚合节点</span>
+                <span>3 点击文物详情</span>
+              </div>
+            </div>
+            <div id="visualArea" class="visual-area"></div>
+          </section>
+
+          <aside class="insightbar">
+            <div class="subsection-title">图谱洞察</div>
+            <div id="insightPanel" class="insights"></div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <div id="typeSegment" hidden></div>
+
+    <div id="filterDrawer" class="filter-drawer" aria-hidden="true">
+      <div class="drawer-mask" data-close-filter></div>
+      <aside class="drawer-panel">
+        <header class="drawer-head">
+          <div>
+            <strong>高级筛选</strong>
+            <span>按地域、年代、类别等条件缩小当前{{PAGE_TYPE}}图谱范围。</span>
+          </div>
+          <button class="drawer-close" data-close-filter type="button" aria-label="关闭">×</button>
+        </header>
+        <div id="filterGroups" class="filter-groups"></div>
+      </aside>
+    </div>
+
+    <div id="detailOverlay" class="detail-overlay" aria-hidden="true">
+      <div class="detail-mask" data-close-detail></div>
+      <section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+        <header class="detail-modal-head">
+          <div>
+            <h2 id="detailModalTitle">文物详情</h2>
+            <div id="detailModalTags" class="detail-modal-tags"></div>
+          </div>
+          <button class="detail-close" data-close-detail type="button" aria-label="关闭">×</button>
+        </header>
+        <div id="detailPanel" class="detail-panel"></div>
+      </section>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

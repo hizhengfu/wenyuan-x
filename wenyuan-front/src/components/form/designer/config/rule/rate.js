@@ -1,0 +1,46 @@
+import uniqueId from '@form-create/utils/lib/unique';
+import { localeProps } from '../../utils';
+
+const label = '评分';
+const name = 'rate';
+
+export default {
+  menu: 'main',
+  icon: 'icon-rate',
+  label,
+  name,
+  event: ['change'],
+  validate: ['number'],
+  rule({ t }) {
+    return {
+      type: name,
+      field: uniqueId(),
+      title: t('com.rate.name'),
+      info: '',
+      $required: false,
+      props: {},
+    };
+  },
+  props(_, { t }) {
+    return localeProps(t, name + '.props', [
+      { type: 'inputNumber', field: 'max', props: { min: 0 } },
+      {
+        type: 'switch',
+        field: 'disabled',
+      },
+      { type: 'switch', field: 'allowHalf' },
+      {
+        type: 'colorPicker',
+        field: 'color',
+      },
+      {
+        type: 'switch',
+        field: 'showScore',
+      },
+      {
+        type: 'input',
+        field: 'scoreTemplate',
+      },
+    ]);
+  },
+};

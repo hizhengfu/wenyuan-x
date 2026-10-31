@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "sourceMap": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "~/*": [
+        "./*"
+      ]
+    },
+    "types": [
+      "vite/client",
+      "node",
+      "vite-plugin-svg-icons-ng/client",
+      "vue-cesium/global.d.ts",
+      "vue-cesium/Cesium.d.ts",
+      "unplugin-icons/types/vue",
+      "naive-ui/volar",
+      "@intlify/unplugin-vue-i18n/messages"
+    ]
+  },
+  "extends": "./tsconfig.private.json",
+  "exclude": [
+    "dist",
+    "resource",
+    "node_modules",
+    "src/**/__tests__/**",
+    "src/**/*.test.ts",
+    "tests"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+<krpano version="1.19">
+
+<!-- Initially coded by Leszek Cuper (January 2016) / Supplementary code by Maël Bathfield (February 2018) -->
+  
+	<!-- events -->
+	<events name="swipe_gallery" keep="true"
+          onresize="if(activeGallery != null, make_gallery(get(activeGallery),get(activeGallery_id)); for(set(i,1), i LE gallery.count, inc(i), init_start_img(get(i));); update_img_number(0,get(activeGallery_id)); , trace(no gallery open) );"
+          onxmlcomplete="for(set(i,1), i LE gallery.count, inc(i), init_action(get(i)); ); set(activeGallery, null);" />
+	
+	<!-- layers -->
+		<layer name="arrow_left"  align="left"  x="10" keep="true" visible="false" zorder="4" onclick="move_image(left,get(activeGallery_id))" url="arrow_left_b.png"  />
+		<layer name="arrow_right" align="right" x="10" keep="true" visible="false" zorder="4" onclick="move_image(right,get(activeGallery_id))" url="arrow_right_b.png" />
+		<layer name="arrow_up"  align="right" edge="right" x="45" y="-17%" scale="0.7" keep="true" visible="false" zorder="4" onclick="move_image(up,get(activeGallery_id))" url="gallery_button.png" crop="0|40|42|66" rotate="180"  />
+		<layer name="arrow_down" align="right" edge="right" x="15" y="17%" scale="0.7" keep="true" visible="false" zorder="4" onclick="move_image(down,get(activeGallery_id))" url="gallery_button.png" crop="0|40|42|66" />
+		<layer name="gallery_close" align="righttop" x="10" y="10" keep="true" zorder="4" visible="false" onclick="hide_gallery(get(activeGallery))" url="gallery_button.png" crop="0|0|42|40"/>
+    <layer name="img_number" type="text" align="bottomright" x="5" y="5" keep="true" visible="false" zorder="4" enabled="false" html="/" background="false" border="false"
+            css.desktop="color:#FFFFFF; font-family:Arial; text-align:right; font-style:bold; font-size:22px;"
+            css.mobile="color:#FFFFFF; font-family:Arial; text-align:right; font-style:bold; font-size:20px;"
+            txtshadow="1 1 3 #000000 0.8" />
+	        <!-- change  css paramater just above for image number display  -->
+
+
+ 	<style name="gallery_style"  align="lefttop" edge="lefttop" width="100%" height="100%" maskchildren="false" alpha="0" autoalpha="true" bgalpha="0.9" zorder="3" bgcapture="true" keep="true" enabled="true" handcursor="false"  />
+
+  	<action name="init_action">
+  set(start_img%1,1);
+  txtadd(gallery_name00,'gallery',%1) ;     
+  set(scrolldirection%1, get(gallery[get(gallery_name00)].mode));
+
+  addlayer(gallery%1);       
+  set(layer[gallery%1].type, container);
+  set(layer[gallery%1].bgcolor, get(gallery[get(gallery_name00)].bgcolor)  );
+  set(layer[gallery%1].onloaded, loadstyle(gallery_style);  ); 
+  set(layer[gallery%1].enabled, true  );
+  set(layer[gallery%1].bgcapture, true  );
+ 
+  addlayer(gallery_scrollarea%1);       
+  if(device.flash,	 set(layer[gallery_scrollarea%1].url,plugins/scrollarea.swf); ,	  set(layer[gallery_scrollarea%1].url,plugins/scrollarea.js);  ); 
+  set(layer[gallery_scrollarea%1].parent, gallery%1);   
+  set(layer[gallery_scrollarea%1].handcursor, false);
+  set(layer[gallery_scrollarea%1].align, topleft);
+  set(layer[gallery_scrollarea%1].edge, topleft);
+  set(layer[gallery_scrollarea%1].zorder, 1);           
+  set(layer[gallery_scrollarea%1].keep, true);
+   delayedcall(0.2,    if(scrolldirection%1 == vertical ,
+          set(layer[gallery_scrollarea%1].direction,v);   set(layer[gallery_scrollarea%1].ondown,set(gallery_scrollarea_start_pos_y%1, get(y)); );
+          mul(layer[gallery_scrollarea%1].height, stageheight, gallery[get(gallery_name00)].img.count); set(layer[gallery_scrollarea%1].width,100%);
+          ,
+          set(layer[gallery_scrollarea%1].direction,h);   set(layer[gallery_scrollarea%1].ondown,set(gallery_scrollarea_start_pos_x%1, get(x)); );
+          mul(layer[gallery_scrollarea%1].width, stagewidth, gallery[get(gallery_name00)].img.count); set(layer[gallery_scrollarea%1].height,100%);
+         );  );
+  </action>
+
+
+	<action name="make_gallery">
+		
+		<!-- config -->
+		set(min_movement, 50);              <!-- minimal movement in pixels needed to swipe picture -->
+		set(show_arrows,  true);            <!-- show gallery arrows -->
+   
+    <!-- creating galery -->
+			set(activeGallery, %1);
+
+			<!-- scroller's width -->
+      layer[gallery_scrollarea%2].setcenter(0,0);
+			set(pic_id, 0);      
+			set(border_size,0);
+      add(border_size,get(gallery[%1].border1_size),get(gallery[%1].border2_size));
+      mul(border_size2, border_size,2);
+      
+			<!-- adding images -->
+		for(set(i,0), i LT gallery[%1].img.count, inc(i), 
+				set(iname, get(gallery[%1].img[get(i)].name));
+				txtadd(cname, get(gallery[%1].img[get(i)].name), '_container');
+				txtadd(tname, get(gallery[%1].img[get(i)].name), '_title');
+				txtadd(bname, get(gallery[%1].img[get(i)].name), '_border1');
+				txtadd(nname, get(gallery[%1].img[get(i)].name), '_border2');
+				
+        removelayer(get(cname));
+        addlayer(get(cname));
+				set(layer[get(cname)].type, container);
+				set(layer[get(cname)].parent, gallery_scrollarea%2);
+				set(layer[get(cname)].width, get(stagewidth));
+				set(layer[get(cname)].height, get(stageheight));
+				set(layer[get(cname)].bgcolor, 0x000000);
+				set(layer[get(cname)].bgalpha, 0.0);
+				set(layer[get(cname)].bgcapture, true);
+				set(layer[get(cname)].edge, center);
+        if( scrolldirection%2 == vertical ,
+				   set(layer[get(cname)].align, top);				
+           mul(layer[get(cname)].y, stageheight, i);
+				   div(layer[get(cname)].oy, stageheight, 2);
+				   set(layer[get(cname)].ondown, set(gallery_scrollarea_start_pos_y%2, get(layer[gallery_scrollarea%2].y)));
+				   ,
+				   set(layer[get(cname)].align, left);				
+           mul(layer[get(cname)].x, stagewidth, i);
+				   div(layer[get(cname)].ox, stagewidth, 2);
+				   set(layer[get(cname)].ondown, set(gallery_scrollarea_start_pos_x%2, get(layer[gallery_scrollarea%2].x)));           
+           );
+        set(layer[get(cname)].onup, move_image(null,get(activeGallery_id)));
+				set(layer[get(cname)].id, get(i));
+        				
+        removelayer(get(iname));
+        addlayer(get(iname));
+				set(layer[get(iname)].url, get(gallery[%1].img[get(i)].url));
+				set(layer[get(iname)].parent, get(cname));
+				set(layer[get(iname)].align, center);
+				set(layer[get(iname)].edge, center);
+        set(layer[get(iname)].enabled, false);
+				set(layer[get(iname)].zorder, 4);
+        set(layer[get(iname)].onloaded, add(pixelwidth_marged, pixelwidth, get(border_size2) );  add(pixelheight_marged, pixelheight, get(border_size2) );
+                                        if (pixelwidth_marged GT stagewidth OR pixelheight_marged GT stageheight, div(hscale, stagewidth, pixelwidth_marged); div(vscale, stageheight, pixelheight_marged); if (hscale GT vscale, set(height, calc( stageheight - border_size2 )); set(width, PROP); , set(width, calc( stagewidth - border_size2 )); set(height, PROP); ))
+                                        );
+		
+				addlayer(get(tname));
+				set(layer[get(tname)].type, text);
+        set(layer[get(tname)].html, get(gallery[%1].img[get(i)].title));
+				set(layer[get(tname)].parent, get(iname));
+        set(layer[get(tname)].align, bottom);
+				set(layer[get(tname)].edge, top);
+				set(layer[get(tname)].y, -5);
+				set(layer[get(tname)].zorder, 4);
+				set(layer[get(tname)].enabled, false);
+        set(layer[get(tname)].onloaded, loadstyle(image_title));    
+
+       		<!-- adding first black border -->
+        addlayer(get(bname));       
+				set(layer[get(bname)].type, container);
+				set(layer[get(bname)].parent, get(iname));
+				set(layer[get(bname)].width, 100%);
+				set(layer[get(bname)].height, 100%);        
+				set(layer[get(bname)].align, center);
+				set(layer[get(bname)].edge, center);
+				set(layer[get(bname)].zorder, 3);
+				txtadd(bgborder_p1, get(gallery[%1].border1_size),' ', get(gallery[%1].border1_color),' ','1');
+        set(layer[get(bname)].bgborder, get(bgborder_p1));  
+ 
+        <!-- adding second white border -->
+        addlayer(get(nname));       
+				set(layer[get(nname)].type, container);
+				set(layer[get(nname)].parent, get(iname));
+				set(layer[get(nname)].width, 100%);
+				set(layer[get(nname)].height, 100%);        
+				set(layer[get(nname)].align, center);
+				set(layer[get(nname)].edge, center);  
+				set(layer[get(nname)].zorder, 2);
+        txtadd(bgborder_p2, get(border_size),' ', get(gallery[%1].border2_color),' ','1');
+				set(layer[get(nname)].bgborder,  get(bgborder_p2));       
+			  
+    	);
+
+		<!-- showing/hidding arrows -->
+		if(show_arrows == true AND gallery[%1].img.count GT 1,
+			    if( scrolldirection%2 == vertical ,
+            set(layer[arrow_up].visible, false);
+			      set(layer[arrow_down].visible, true);
+			      ,
+            set(layer[arrow_left].visible, false);
+			      set(layer[arrow_right].visible, true);
+            );
+			,
+			    if( scrolldirection%2 == vertical ,
+            set(layer[arrow_up].visible, false);
+			      set(layer[arrow_down].visible, false);
+			      ,
+            set(layer[arrow_left].visible, false);
+			      set(layer[arrow_right].visible, false);
+            );
+		  );
+  trace(%0 %1 DONE); 
+	</action>
+	 	
+	<action name="move_image">
+		trace(%0 %1);
+
+    if( scrolldirection%2 == vertical ,
+		sub(gallery_scrollarea_direction%2, gallery_scrollarea_start_pos_y%2, layer[gallery_scrollarea%2].y);
+		,
+		sub(gallery_scrollarea_direction%2, gallery_scrollarea_start_pos_x%2, layer[gallery_scrollarea%2].x);    
+    );
+    
+		<!-- 'moving' by arrows clicking (parames left/right) -->
+		if(%1 == left OR %1 == up , set(gallery_scrollarea_direction%2, -500));
+		if(%1 == right OR %1 == down , set(gallery_scrollarea_direction%2, 500));
+		
+		Math.abs(movement_g, gallery_scrollarea_direction%2);
+		
+		if (movement_g GT min_movement,
+			if(gallery_scrollarea_direction%2 LT 0,
+				<!-- move right/up -->
+				dec(pic_id); update_img_number(-1,get(activeGallery_id));
+				if(pic_id LT 0, inc(pic_id));
+				,
+				<!-- move left/down -->
+				inc(pic_id); update_img_number(+1,get(activeGallery_id));
+				if(pic_id GE gallery[get(activeGallery)].img.count, dec(pic_id));
+			);
+			
+			<!-- updating arrows status -->
+			if(show_arrows == true,
+				sub(last_img_id, gallery[get(activeGallery)].img.count, 1);
+				if( scrolldirection%2 == vertical ,
+        if(pic_id LE 0, set(layer[arrow_up].visible, false);, set(layer[arrow_up].visible, true); );
+				if(pic_id LT  last_img_id,  set(layer[arrow_down].visible, true);,  set(layer[arrow_down].visible, false); );
+        ,
+        if(pic_id LE 0, set(layer[arrow_left].visible, false); , set(layer[arrow_left].visible, true); );
+				if(pic_id LT  last_img_id, set(layer[arrow_right].visible, true); , set(layer[arrow_right].visible, false); );        
+        );
+			);
+		);
+
+    if( scrolldirection%2 == vertical ,		
+      mul(gallery_scrollarea_new_pos%2, pic_id, stageheight);
+		  div(stageheight2, stageheight, 2);
+		  add(gallery_scrollarea_new_pos%2, stageheight2);
+		  layer[gallery_scrollarea%2].scrolltocenter(0,get(gallery_scrollarea_new_pos%2));
+		  ,
+      mul(gallery_scrollarea_new_pos%2, pic_id, stagewidth);
+		  div(stagewidth2, stagewidth, 2);
+		  add(gallery_scrollarea_new_pos%2, stagewidth2);      
+		  layer[gallery_scrollarea%2].scrolltocenter(get(gallery_scrollarea_new_pos%2),0);
+      );
+
+		
+	</action>
+	
+	<action name="hide_gallery">
+    set(layer[gallery_close].visible,false);  set(layer[img_number].visible,false);
+    set(layer[arrow_up].visible, false); set(layer[arrow_down].visible, false); set(layer[arrow_right].visible, false); set(layer[arrow_left].visible, false);
+		tween(layer[%1].alpha, 0);
+	</action>
+	
+	<action name="show_gallery">
+		if(%1 != activeGallery, 
+		 subtxt(activeGallery_id, %1,7,2); make_gallery(%1,get(activeGallery_id)); init_start_img(get(activeGallery_id)); 
+		); 
+		tween(layer[%1].alpha, 1); set(layer[gallery_close].visible,true); set(layer[img_number].visible,true);
+	</action>
+ 
+  <action name="update_img_number">  
+    add(start_img%2,get(start_img%2),%1); 
+    if(start_img%2 GT total_img, set(start_img%2,get(total_img)); ); if(start_img%2 LT 1, set(start_img%2,1); );
+    txtadd(img_number_label, get(start_img%2) ,'/', get(total_img));
+    set(layer[img_number].html, get(img_number_label));
+	</action> 
+ 
+  <action name="init_start_img">  
+     set(start_img%1,1);  
+	</action> 
+    	
+</krpano>

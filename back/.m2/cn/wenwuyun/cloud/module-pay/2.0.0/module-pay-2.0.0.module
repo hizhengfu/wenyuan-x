@@ -1,0 +1,178 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-pay",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "com.github.javen205",
+          "module": "IJPay-WxPay",
+          "version": {
+            "requires": "2.9.7-17"
+          }
+        },
+        {
+          "group": "com.github.javen205",
+          "module": "IJPay-AliPay",
+          "version": {
+            "requires": "2.9.7-17"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-pay-2.0.0.jar",
+          "url": "module-pay-2.0.0.jar",
+          "size": 56256,
+          "sha512": "5a1dc309685bd43d5f6c9e2a6f12855340161997f3d880f22a32d8108541a8b275f28060589a19ae75af971b9261e2598d8ebcecd279fce769694dd6d2a314dd",
+          "sha256": "7c6a4a48fcfbc65b6c45491ec64d02541c2b8a41b10cbdb1ba50438a62c952f3",
+          "sha1": "0bb41967ce6ee62fd64baec22b06b4e8dbd5c50e",
+          "md5": "08ab892db981adda80dbe0ca1d4745ab"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-configuration-processor",
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.javen205",
+          "module": "IJPay-WxPay",
+          "version": {
+            "requires": "2.9.7-17"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "com.github.javen205",
+          "module": "IJPay-AliPay",
+          "version": {
+            "requires": "2.9.7-17"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-pay-2.0.0.jar",
+          "url": "module-pay-2.0.0.jar",
+          "size": 56256,
+          "sha512": "5a1dc309685bd43d5f6c9e2a6f12855340161997f3d880f22a32d8108541a8b275f28060589a19ae75af971b9261e2598d8ebcecd279fce769694dd6d2a314dd",
+          "sha256": "7c6a4a48fcfbc65b6c45491ec64d02541c2b8a41b10cbdb1ba50438a62c952f3",
+          "sha1": "0bb41967ce6ee62fd64baec22b06b4e8dbd5c50e",
+          "md5": "08ab892db981adda80dbe0ca1d4745ab"
+        }
+      ]
+    }
+  ]
+}

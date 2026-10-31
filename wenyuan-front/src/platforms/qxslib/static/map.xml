@@ -1,0 +1,69 @@
+<krpano>
+
+<!--地图按钮-->
+<layer name="huxing"  url="%SWFPATH%/skin/close_Map.png" align="right" scale="1" zorder="2" alpha="1" x="0" y="0" keep="true" onclick="openmap();" />
+<!--地图按钮-->
+
+<!--插入底层容器-->
+<layer name="mapcontainer" keep="true" type="container" bgcolor="0x000000" bgalpha="0.0" align="right" x="-410" y="0" width="410" height="269"  parent="huxing">
+
+<!--插入地图图片	-->
+	<layer name="map" url="%SWFPATH%/skin/huxing.png" align="right" x="0" y="0" width="410" height="269" handcursor="false" >
+
+	<!-- 户型图雷达指针 -->
+	<plugin name="radar" url="%SWFPATH%/plugins/radar.swf" alturl="%SWFPATH%/plugins/radar.js" editmode="true" zorder="1" keep="true" heading="0"  parent="mapbar" align="righttop" edge="center" x="0" y="0" linecolor="0"  fillcolor="0xFF9900" scale="0.2" />
+	<plugin name="activespot" url="skin/current_pano.png" keep="true" align="righttop" x="11" y = "11" edge="center" visible="true" zorder="6" />
+	<!-- 户型图雷达指针  -->
+
+	<!--插入热点-->
+		<layer name="spot1" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="10" y="50" zorder="2" onclick="loadscene(scene_01);" />
+		<layer name="spot2" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="70" y="50" zorder="2" onclick="loadscene(scene_02);" />
+		<layer name="spot4" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="145" y="50" zorder="2" onclick="loadscene(scene_04);" />
+		<layer name="spot5" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="230" y="50" zorder="2" onclick="loadscene(scene_05);" />
+		<layer name="spot6" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="270" y="60" zorder="2" onclick="loadscene(scene_06);" />
+		<layer name="spot7" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="320" y="60" zorder="2" onclick="loadscene(scene_07);" />
+		<layer name="spot8" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="390" y="40" zorder="2" onclick="loadscene(scene_08);" />
+		<layer name="spot9" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="390" y="80" zorder="2" onclick="loadscene(scene_09);" />
+		<layer name="spot10" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="390" y="140" zorder="2" onclick="loadscene(scene_10);" />
+		<layer name="spot11" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="390" y="220" zorder="2" onclick="loadscene(scene_11);" />
+		<layer name="spot12" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="310" y="170" zorder="2" onclick="loadscene(scene_12);" />
+		<layer name="spot13" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="245" y="185" zorder="2" onclick="loadscene(scene_13);" />
+		<layer name="spot14" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="175" y="220" zorder="2" onclick="loadscene(scene_14);" />
+		<layer name="spot15" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="70" y="220" zorder="2" onclick="loadscene(scene_15);" />
+		<layer name="spot16" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="70" y="150" zorder="2" onclick="loadscene(scene_16);" />
+		<layer name="spot17" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="60" y="110" zorder="2" onclick="loadscene(scene_17);" />
+		<layer name="spot18" url="%SWFPATH%/skin/hot.png"  align="righttop" edge="center" x="190" y="120" zorder="2" onclick="loadscene(scene_18);" />
+
+	</layer>
+
+</layer>
+
+
+
+<action name="closemap">
+		<!--设定下一次onclick的动作-->
+        set(onclick, openmap() );
+        <!-- 改变XY坐标，将导航图容器移出屏幕，移出过程不设置，即为默认0.5秒-->
+        tween(layer[huxing].x,0,0.5);
+		 tween(layer[huxing].y,0,0.5);
+     </action>
+    <action name="openmap">
+		<!--设定下一次onclick的动作-->
+        set(onclick, closemap() );
+       <!-- 改变XY坐标，将导航图容器移入屏幕，移入过程为1秒-->
+        tween(layer[huxing].x,410,0.5);
+		tween(layer[huxing].y,0,0.5);
+    </action>
+
+	<!--地图雷达切换-->
+	<action name="activatespot">
+			set(plugin[activespot].parent, plugin[%1]);
+			set(plugin[activespot].visible, true);
+			copy(plugin[radar].x, plugin[%1].x);
+			copy(plugin[radar].y, plugin[%1].y);
+			set(plugin[radar].visible, true);
+			set(plugin[radar].heading, %2);
+	</action>
+	<!--地图雷达切换-->
+
+</krpano>

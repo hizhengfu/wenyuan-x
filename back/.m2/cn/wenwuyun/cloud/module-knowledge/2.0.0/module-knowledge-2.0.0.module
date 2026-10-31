@@ -1,0 +1,232 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cn.wenwuyun.cloud",
+    "module": "module-knowledge",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "module-knowledge-2.0.0.jar",
+          "url": "module-knowledge-2.0.0.jar",
+          "size": 193610,
+          "sha512": "6a991e41148a49b915f9d86d1e7b053a92f7ff373098d957174e10de93bf052ba434dbb553ede7860a80dba4875df26a69a69d9a28186e4a816fc7989d9a7975",
+          "sha256": "8ced82e2e91fe18facb1d070c137599cc821f629262878fea47f89e040600328",
+          "sha1": "5841403a87ced1c35dc83d21b83504dce0a1aa00",
+          "md5": "69f76d5d1333849cb15ae94a80e6ec11"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-ai",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-core",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-pdf-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-microsoft-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-miscoffice-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-text-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-html-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.apache.tika",
+          "module": "tika-parser-xml-module",
+          "version": {
+            "requires": "3.3.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-common",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "cn.wenwuyun.cloud",
+          "module": "module-sys",
+          "version": {
+            "requires": "2.0.0"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          },
+          "excludes": [
+            {
+              "group": "com.h2database",
+              "module": "h2"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "module-knowledge-2.0.0.jar",
+          "url": "module-knowledge-2.0.0.jar",
+          "size": 193610,
+          "sha512": "6a991e41148a49b915f9d86d1e7b053a92f7ff373098d957174e10de93bf052ba434dbb553ede7860a80dba4875df26a69a69d9a28186e4a816fc7989d9a7975",
+          "sha256": "8ced82e2e91fe18facb1d070c137599cc821f629262878fea47f89e040600328",
+          "sha1": "5841403a87ced1c35dc83d21b83504dce0a1aa00",
+          "md5": "69f76d5d1333849cb15ae94a80e6ec11"
+        }
+      ]
+    }
+  ]
+}

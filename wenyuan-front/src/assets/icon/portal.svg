@@ -1,0 +1,8 @@
+<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32">
+    <path d="M928.174 927.64H96.025V95.99h832.149v831.65z m-768.149-64h704.149V159.99H160.025v703.65z"
+    ></path>
+    <path d="M128.025 287.996h768.149v64H128.025zM128.025 574.999H525v64H128.025z"></path>
+    <path d="M500.999 319.996h64V895.64h-64zM216.999 127.99h64v192.006h-64zM335 123h64v196.996h-64z"
+    ></path>
+</svg>

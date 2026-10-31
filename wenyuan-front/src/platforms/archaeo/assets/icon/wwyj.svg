@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+    d="M430 150C275.36 150 150 275.36 150 430s125.36 280 280 280 280-125.36 280-280S584.64 150 430 150zM240 430c0-104.93 85.07-190 190-190s190 85.07 190 190-85.07 190-190 190-190-85.07-190-190z"/>
+  <path fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round"
+    d="M620 620 838 838"/>
+  <path fill="currentColor"
+    d="M360 372h140v44H360zM360 446h140v44H360zM376 300h108c11.05 0 20 8.95 20 20v8H356v-8c0-11.05 8.95-20 20-20z"/>
+</svg>
